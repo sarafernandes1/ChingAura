@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Transform cameratransform;
     public InputController inputController;
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -25,14 +28,16 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
+        Vector3 camRotation = cameratransform.eulerAngles;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
+
         Vector2 playermoviment = inputController.GetPlayerMoviment();
         Vector3 move = new Vector3(playermoviment.x, 0, playermoviment.y);
-        controller.Move(move * Time.deltaTime * playerSpeed);
+        move = transform.forward * move.z + transform.right * move.x;
+        move.y = 0;
+        move.Normalize();
 
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player..
         if (inputController.GetPlayerJumpInThisFrame() && groundedPlayer)

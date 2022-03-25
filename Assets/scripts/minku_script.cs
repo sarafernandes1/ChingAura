@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class minku_script : MonoBehaviour
 {
     public InputController inputController;
-    public RawImage fundo_inventario;
+    public Collider zorri;
+    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     // mac -> maçã
     // n -> noz
@@ -14,9 +15,10 @@ public class minku_script : MonoBehaviour
     // a -> amora
     // mal -> malagueta
     // cen -> cenoura
-    public Text n_mac, n_n, n_g,n_a, n_mal, n_cen;
+    public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
-    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura;
+    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii;
+    public int meuros = 0;
 
     void Start()
     {
@@ -122,12 +124,24 @@ public class minku_script : MonoBehaviour
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
             n_mac.enabled = !n_mac.enabled;
+            imaca.enabled = !imaca.enabled;
             n_n.enabled = !n_n.enabled;
+            inoz.enabled = !inoz.enabled;
             n_g.enabled = !n_g.enabled;
+            igroselha.enabled = !igroselha.enabled;
             n_a.enabled = !n_a.enabled;
+            iamora.enabled = !iamora.enabled;
             n_mal.enabled = !n_mal.enabled;
+            imal.enabled = !imal.enabled;
             n_cen.enabled = !n_cen.enabled;
+            icen.enabled = !icen.enabled;
         }
 
+        d_zorii = Vector3.Distance(transform.position,zorri.transform.position);
+        if (d_zorii < 5.0f && inputController.GetPlayerItem())
+        {
+            n_meuros.enabled = !n_meuros.enabled;
+            n_meuros.text = meuros.ToString();
+        }
     }
 }

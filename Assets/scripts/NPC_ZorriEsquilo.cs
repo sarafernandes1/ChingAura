@@ -10,6 +10,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public InputController inputController;
     public RawImage fundo;
     public Text m,n,a,g,c,mal;
+    public CharacterController characterController;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
         if(distancetoMinku<5.0f && inputController.GetPlayerItem())
         {
+            characterController.enabled = false;
             fundo.enabled = !fundo.enabled;
             m.enabled = !m.enabled;
             n.enabled = !n.enabled;
@@ -30,6 +32,11 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             g.enabled = !g.enabled;
             c.enabled = !c.enabled;
             mal.enabled = !mal.enabled;
+        }
+
+        if (!m.enabled)
+        {
+            characterController.enabled = true;
         }
     }
 }

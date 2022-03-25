@@ -18,7 +18,8 @@ public class minku_script : MonoBehaviour
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
     public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii;
-    public int meuros = 0;
+    public int q_meuros = 20;
+    public Button c1, c2;
 
     void Start()
     {
@@ -119,8 +120,11 @@ public class minku_script : MonoBehaviour
             }
         }
 
+
+        d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
+
         // VER INVENTÁRIO
-        if (inputController.GetPlayerInventario())
+        if (inputController.GetPlayerInventario() || d_zorii < 3.0f && inputController.GetPlayerItem())
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
             n_mac.enabled = !n_mac.enabled;
@@ -135,13 +139,21 @@ public class minku_script : MonoBehaviour
             imal.enabled = !imal.enabled;
             n_cen.enabled = !n_cen.enabled;
             icen.enabled = !icen.enabled;
+            n_meuros.enabled = !n_meuros.enabled;
+            n_meuros.text = q_meuros.ToString();
+            if (d_zorii < 3.0f && inputController.GetPlayerItem())
+            {
+                if (c1.name == "acesso concedido" && q_meuros >= 5)
+                {
+                    q_meuros -= 5;
+                    q_maca++;
+
+                    n_mac.text = q_maca.ToString();
+                    c1.name = "a";
+                }
+            }
         }
 
-        d_zorii = Vector3.Distance(transform.position,zorri.transform.position);
-        if (d_zorii < 5.0f && inputController.GetPlayerItem())
-        {
-            n_meuros.enabled = !n_meuros.enabled;
-            n_meuros.text = meuros.ToString();
-        }
+       
     }
 }

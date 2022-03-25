@@ -9,8 +9,9 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public float distancetoMinku;
     public InputController inputController;
     public RawImage fundo;
-    public Text m,n,a,g,c,mal;
+    public Text m, n, a, g, c, mal, buttontext, bt2;
     public CharacterController characterController;
+    public Button comprar, comprar2;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,10 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distancetoMinku<5.0f && inputController.GetPlayerItem())
+;        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
+        if(distancetoMinku<3.0f && inputController.GetPlayerItem())
         {
-            characterController.enabled = false;
+            //characterController.enabled = false;
             fundo.enabled = !fundo.enabled;
             m.enabled = !m.enabled;
             n.enabled = !n.enabled;
@@ -32,11 +33,18 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             g.enabled = !g.enabled;
             c.enabled = !c.enabled;
             mal.enabled = !mal.enabled;
+            comprar.image.enabled = !comprar.image.enabled;
+            buttontext.enabled = !buttontext.enabled;
+            comprar2.image.enabled = !comprar2.image.enabled;
+            comprar2.enabled = !comprar2.enabled;
+            bt2.enabled = !bt2.enabled;
         }
 
-        if (!m.enabled)
-        {
-            characterController.enabled = true;
-        }
+    }
+
+    public void ComprarMaca() 
+    {
+        Debug.Log("compra");
+        comprar.name = "acesso concedido";
     }
 }

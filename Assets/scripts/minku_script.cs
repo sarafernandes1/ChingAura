@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class minku_script : MonoBehaviour
 {
     public InputController inputController;
-    public Collider zorri;
+    public Collider zorri, robert;
     public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     // mac -> maçã
@@ -17,9 +17,9 @@ public class minku_script : MonoBehaviour
     // cen -> cenoura
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
-    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii;
+    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert;
     public int q_meuros = 20;
-    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura;
+    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura, button_troca;
 
     void Start()
     {
@@ -29,7 +29,6 @@ public class minku_script : MonoBehaviour
     void Update()
     {
         // APANHAR OS ITENS
-
         // maçãs
         for (int i = 0; i < maca.Length; i++)
         {
@@ -123,68 +122,73 @@ public class minku_script : MonoBehaviour
         // se a distancia há loja do zorii for menor que 3, o botão de compra tenha sido premido e
         // haja meuros sufecientes, a compra é feita
         d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
-        if (d_zorii < 3.0f && compra_macas.name == "acesso maca concedido" && q_meuros >= 5)
+        d_robert = Vector3.Distance(transform.position, robert.transform.position);
+        if (d_zorii < 3.0f)
         {
+            if (compra_macas.name == "acesso maca concedido" && q_meuros >= 5)
+            {
                 q_meuros -= 5;
                 q_maca++;
                 n_meuros.text = q_meuros.ToString();
                 n_mac.text = q_maca.ToString();
                 compra_macas.name = "a";
-            
-        }
 
-        if (d_zorii < 3.0f && compra_noz.name == "acesso noz concedido" && q_meuros >= 2)
-        {
-            q_meuros -= 2;
-            q_noz++;
-            n_meuros.text = q_meuros.ToString();
-            n_n.text = q_noz.ToString();
-            compra_noz.name = "noz";
+            }
 
-        }
+            if (compra_noz.name == "acesso noz concedido" && q_meuros >= 2)
+            {
+                q_meuros -= 2;
+                q_noz++;
+                n_meuros.text = q_meuros.ToString();
+                n_n.text = q_noz.ToString();
+                compra_noz.name = "noz";
 
-        if (d_zorii < 3.0f && compra_amora.name == "acesso amora concedido" && q_meuros >= 3)
-        {
-            q_meuros -= 3;
-            q_amora++;
-            n_meuros.text = q_meuros.ToString();
-            n_a.text = q_amora.ToString();
-            compra_amora.name = "amora";
+            }
 
-        }
+            if (compra_amora.name == "acesso amora concedido" && q_meuros >= 3)
+            {
+                q_meuros -= 3;
+                q_amora++;
+                n_meuros.text = q_meuros.ToString();
+                n_a.text = q_amora.ToString();
+                compra_amora.name = "amora";
 
-        if (d_zorii < 3.0f && compra_groselha.name == "acesso groselha concedido" && q_meuros >= 3)
-        {
-            q_meuros -= 3;
-            q_groselha++;
-            n_meuros.text = q_meuros.ToString();
-            n_g.text = q_groselha.ToString();
-            compra_groselha.name = "groselha";
+            }
 
-        }
+            if (compra_groselha.name == "acesso groselha concedido" && q_meuros >= 3)
+            {
+                q_meuros -= 3;
+                q_groselha++;
+                n_meuros.text = q_meuros.ToString();
+                n_g.text = q_groselha.ToString();
+                compra_groselha.name = "groselha";
 
-        if (d_zorii < 3.0f && compra_malagueta.name == "acesso malagueta concedido" && q_meuros >= 13)
-        {
-            q_meuros -= 13;
-            q_malagueta++;
-            n_meuros.text = q_meuros.ToString();
-            n_mal.text = q_malagueta.ToString();
-            compra_malagueta.name = "malagueta";
+            }
 
-        }
+            if (compra_malagueta.name == "acesso malagueta concedido" && q_meuros >= 13)
+            {
+                q_meuros -= 13;
+                q_malagueta++;
+                n_meuros.text = q_meuros.ToString();
+                n_mal.text = q_malagueta.ToString();
+                compra_malagueta.name = "malagueta";
 
-        if (d_zorii < 3.0f && compra_cenoura.name == "acesso cenoura concedido" && q_meuros >= 20)
-        {
-            q_meuros -= 20;
-            q_cenoura++;
-            n_meuros.text = q_meuros.ToString();
-            n_cen.text = q_cenoura.ToString();
-            compra_cenoura.name = "cenoura";
+            }
 
+            if (compra_cenoura.name == "acesso cenoura concedido" && q_meuros >= 20)
+            {
+                q_meuros -= 20;
+                q_cenoura++;
+                n_meuros.text = q_meuros.ToString();
+                n_cen.text = q_cenoura.ToString();
+                compra_cenoura.name = "cenoura";
+
+            }
         }
 
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() || d_zorii < 3.0f && inputController.GetPlayerItem())
+        if (inputController.GetPlayerInventario() || d_zorii < 3.0f && inputController.GetPlayerItem() ||
+            d_robert<3.0f && inputController.GetPlayerItem())
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
             n_mac.enabled = !n_mac.enabled;
@@ -202,6 +206,10 @@ public class minku_script : MonoBehaviour
             n_meuros.enabled = !n_meuros.enabled;
             n_meuros.text = q_meuros.ToString();
         }
+
+        // Troca de informação por cenouras
+        if (q_cenoura > 0) button_troca.interactable = true;
+        else button_troca.interactable = false;
 
     }
 }

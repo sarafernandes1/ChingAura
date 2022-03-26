@@ -9,20 +9,19 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public float distancetoMinku;
     public InputController inputController;
     public RawImage fundo;
-    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6;
+    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros;
     public CharacterController characterController;
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura;
+    public int numero_meuros;
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-;        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
+        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
         if(distancetoMinku<3.0f && inputController.GetPlayerItem())
         {
             characterController.enabled = false;
@@ -54,6 +53,20 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             characterController.enabled = true;
         }
 
+        // Ativar ou desativar os butoes de compra, dependendo do número de meuros
+        numero_meuros = int.Parse(tmeuros.text);
+        if (numero_meuros >= 5) c_maca.interactable = true;
+        else c_maca.interactable = false;
+        if (numero_meuros >= 2) c_noz.interactable = true;
+        else c_noz.interactable = false;
+        if (numero_meuros >= 3) c_amora.interactable = true;
+        else c_amora.interactable = false;
+        if (numero_meuros >= 3) c_groselha.interactable = true;
+        else c_groselha.interactable = false;
+        if (numero_meuros >= 13) c_malagueta.interactable = true;
+        else c_malagueta.interactable = false;
+        if (numero_meuros >= 20) c_cenoura.interactable = true;
+        else c_cenoura.interactable = false;
     }
 
     // Quando clica no botão, compra itens

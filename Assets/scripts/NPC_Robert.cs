@@ -11,6 +11,8 @@ public class NPC_Robert : MonoBehaviour
     public Text texto_tela, texto_button, texto_cenouras;
     public int numero_cenouras = 0;
     private float distanceToMinku;
+    public CharacterController characterController;
+    private bool to_inteiro;
 
     void Start()
     {
@@ -20,12 +22,19 @@ public class NPC_Robert : MonoBehaviour
     void Update()
     {
         distanceToMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distanceToMinku<3.0f && inputController.GetPlayerItem())
+        to_inteiro = int.TryParse(texto_cenouras.text, out numero_cenouras);
+        if(distanceToMinku<6.0f && inputController.GetPlayerItem())
         {
             troca.image.enabled = !troca.image.enabled;
             texto_tela.enabled = !texto_tela.enabled;
             texto_button.enabled = !texto_button.enabled;
-            numero_cenouras = int.Parse(texto_cenouras.text);
+            if(to_inteiro) numero_cenouras = int.Parse(texto_cenouras.text);
+            characterController.enabled = false;
+        }
+
+        if (!texto_tela.enabled)
+        {
+            characterController.enabled = true;
         }
     }
 

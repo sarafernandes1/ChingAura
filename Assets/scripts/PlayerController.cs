@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 camRotation = cameratransform.eulerAngles;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
-
+     
         Vector2 playermoviment = inputController.GetPlayerMoviment();
         Vector3 move = new Vector3(playermoviment.x, 0, playermoviment.y);
         move = transform.forward * move.z + transform.right * move.x;
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-
+        
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }

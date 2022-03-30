@@ -13,6 +13,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public CharacterController characterController;
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura;
     public int numero_meuros;
+    private bool to_inteiro;
 
     void Start()
     {
@@ -21,8 +22,9 @@ public class NPC_ZorriEsquilo : MonoBehaviour
 
     void Update()
     {
+        to_inteiro = int.TryParse(tmeuros.text, out numero_meuros);
         distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distancetoMinku<3.0f && inputController.GetPlayerItem())
+        if(distancetoMinku<6.0f && inputController.GetPlayerItem())
         {
             characterController.enabled = false;
             fundo.enabled = !fundo.enabled;
@@ -54,7 +56,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         }
 
         // Ativar ou desativar os butoes de compra, dependendo do número de meuros
-        numero_meuros = int.Parse(tmeuros.text);
+        if(to_inteiro) numero_meuros = int.Parse(tmeuros.text);
         if (numero_meuros >= 5) c_maca.interactable = true;
         else c_maca.interactable = false;
         if (numero_meuros >= 2) c_noz.interactable = true;

@@ -324,12 +324,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77370889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.9, z: -0.23}
+  m_LocalPosition: {x: 0.16, y: 0.9, z: -1.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1879199841}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &103314414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+  m_PrefabInstance: {fileID: 699805183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &103314415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+  m_PrefabInstance: {fileID: 699805183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &103314416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103314414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aa687e96940c1644be33f68bfca0abb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minku: {fileID: 1879199838}
+  distancetoMinku: 0
+  inputController: {fileID: 901998492}
+  fundo: {fileID: 461337110}
+  m: {fileID: 6798202}
+  n: {fileID: 1597331345}
+  a: {fileID: 659242322}
+  g: {fileID: 456154777}
+  c: {fileID: 1673612634}
+  mal: {fileID: 1030531726}
+  buttontext: {fileID: 920539225}
+  bt2: {fileID: 772425686}
+  bt3: {fileID: 2052695431}
+  bt4: {fileID: 713307376}
+  bt5: {fileID: 395083982}
+  bt6: {fileID: 791683262}
+  tmeuros: {fileID: 512123437}
+  characterController: {fileID: 1879199837}
+  c_maca: {fileID: 327496288}
+  c_noz: {fileID: 1770538934}
+  c_amora: {fileID: 698971955}
+  c_groselha: {fileID: 1116781445}
+  c_malagueta: {fileID: 1534898148}
+  c_cenoura: {fileID: 919452702}
+  numero_meuros: 0
 --- !u!1 &131944821
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1236,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: ComprarMaca
         m_Mode: 1
@@ -2774,7 +2821,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: ComprarAmora
         m_Mode: 1
@@ -2824,6 +2871,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698971953}
   m_CullTransparentMesh: 1
+--- !u!1001 &699805183
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1831292342}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 145.44
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -189.808
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 53.588593
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4509823143501964880, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 275cd1df4034ba440aed13344401b2af, type: 2}
+    - target: {fileID: -264430861247414160, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2545aa6568b85a449a02ba891305e921, type: 2}
+    - target: {fileID: 919132149155446097, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_Name
+      value: Zorii
+      objectReference: {fileID: 0}
+    - target: {fileID: 1784764912429873453, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 275cd1df4034ba440aed13344401b2af, type: 2}
+    - target: {fileID: 4899486392329470165, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2545aa6568b85a449a02ba891305e921, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
 --- !u!1001 &703310679
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3131,7 +3263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718755558}
   m_LocalRotation: {x: 0.16113245, y: -0.13983849, z: 0.023047516, w: 0.9767039}
-  m_LocalPosition: {x: 174.28168, y: -188.851, z: 48.553593}
+  m_LocalPosition: {x: 174.28168, y: -188.851, z: 46.99359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 436104037}
@@ -3166,7 +3298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc1: {fileID: 1163200719}
-  npc2: {fileID: 1602954279}
+  npc2: {fileID: 0}
   jogador: {fileID: 1879199838}
   distanceto1: 0
   distanceto2: 0
@@ -3699,7 +3831,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: ComprarCenoura
         m_Mode: 1
@@ -3985,7 +4117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 174.28168, y: -188.851, z: 48.553593}
+  m_LocalPosition: {x: 174.28168, y: -188.851, z: 46.99359}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1386350967}
@@ -4201,7 +4333,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: ComprarGroselha
         m_Mode: 1
@@ -4448,6 +4580,24 @@ MonoBehaviour:
   texto_cenouras: {fileID: 172083100}
   numero_cenouras: 0
   characterController: {fileID: 1879199837}
+--- !u!1 &1213587421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3587788796799408565, guid: e8d05e7d39e2fdc4ba8b8131aa559ee5, type: 3}
+  m_PrefabInstance: {fileID: 699805183}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1213587425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213587421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15072426, y: 0.19686896, z: 0.09131332}
+  m_Center: {x: 0.00881255, y: -0.045660425, z: 0.03948538}
 --- !u!4 &1228235333 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5e5a69537081eba46be1e58bc4dddf79, type: 3}
@@ -5019,7 +5169,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
-  m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
@@ -5145,7 +5294,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: ComprarMalagueta
         m_Mode: 1
@@ -5348,139 +5497,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597331343}
   m_CullTransparentMesh: 1
---- !u!1 &1602954278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1602954282}
-  - component: {fileID: 1602954281}
-  - component: {fileID: 1602954280}
-  - component: {fileID: 1602954279}
-  - component: {fileID: 1602954283}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1602954279
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602954278}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1602954280
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602954278}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1602954281
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602954278}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1602954282
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602954278}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 144.7, y: -190.351, z: 54.575348}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
-  m_Father: {fileID: 1831292342}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1602954283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602954278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa687e96940c1644be33f68bfca0abb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minku: {fileID: 1879199838}
-  distancetoMinku: 0
-  inputController: {fileID: 901998492}
-  fundo: {fileID: 461337110}
-  m: {fileID: 6798202}
-  n: {fileID: 1597331345}
-  a: {fileID: 659242322}
-  g: {fileID: 456154777}
-  c: {fileID: 1673612634}
-  mal: {fileID: 1030531726}
-  buttontext: {fileID: 920539225}
-  bt2: {fileID: 772425686}
-  bt3: {fileID: 2052695431}
-  bt4: {fileID: 713307376}
-  bt5: {fileID: 395083982}
-  bt6: {fileID: 791683262}
-  tmeuros: {fileID: 512123437}
-  characterController: {fileID: 1879199837}
-  c_maca: {fileID: 327496288}
-  c_noz: {fileID: 1770538934}
-  c_amora: {fileID: 698971955}
-  c_groselha: {fileID: 1116781445}
-  c_malagueta: {fileID: 1534898148}
-  c_cenoura: {fileID: 919452702}
-  numero_meuros: 0
 --- !u!1 &1631531690 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -64791798521675068, guid: 5a7f0982e2263724889d67a1aff3568d, type: 3}
@@ -5800,7 +5816,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1602954283}
+      - m_Target: {fileID: 103314416}
         m_TargetAssemblyTypeName: NPC_ZorriEsquilo, Assembly-CSharp
         m_MethodName: CompraNoz
         m_Mode: 1
@@ -6055,7 +6071,7 @@ Transform:
   - {fileID: 1399619481}
   - {fileID: 518205930}
   - {fileID: 1163200722}
-  - {fileID: 1602954282}
+  - {fileID: 103314415}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6279,7 +6295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputController: {fileID: 901998492}
-  zorri: {fileID: 1602954279}
+  zorri: {fileID: 1213587425}
   robert: {fileID: 1163200719}
   fundo_inventario: {fileID: 472693003}
   imaca: {fileID: 784237269}

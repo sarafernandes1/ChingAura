@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    public float playerSpeed = 2.0f;
+    public float playerSpeed = 3.0f;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
 
@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector3 camRotation = cameratransform.eulerAngles;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, camRotation.y, transform.eulerAngles.z);
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
      
         Vector2 playermoviment = inputController.GetPlayerMoviment();
         Vector3 move = new Vector3(playermoviment.x, 0, playermoviment.y);
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
         
+        
+
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
     }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SairJogopeloEsc : MonoBehaviour
 {
+    public InputController inputController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +16,7 @@ public class SairJogopeloEsc : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (inputController.GetPlayerSairEsc())
         {
             SceneManager.LoadScene(0);
         }

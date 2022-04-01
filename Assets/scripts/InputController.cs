@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
     private PlayerControls _playerControls;
+    public Button continuar_dialogo;
 
     // Start is called before the first frame update
     void Awake()
@@ -40,6 +42,21 @@ public class InputController : MonoBehaviour
     public bool GetPlayerInventario()
     {
         return _playerControls.Player.Inventario.triggered;
+    }
+
+    public bool GetPlayerSairEsc()
+    {
+        return _playerControls.Player.SairEsc.triggered;
+    }
+
+    public bool NextDialogo()
+    {
+        return _playerControls.Player.ProximoDialogo.triggered;
+    }
+
+    public void ContinuarDialogo()
+    {
+        continuar_dialogo.name = "continuar";
     }
 
     private void OnDisable()

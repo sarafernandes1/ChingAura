@@ -57,6 +57,22 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SairEsc"",
+                    ""type"": ""Button"",
+                    ""id"": ""13c1d63e-8e17-453d-b60d-d607cc39fb39"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ProximoDialogo"",
+                    ""type"": ""Button"",
+                    ""id"": ""74613a2c-a2bc-4b98-ba23-78cf53390e21"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -158,6 +174,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Inventario"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d012e40-0bbb-4f1f-b9db-3854bc8e084d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SairEsc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef712ba4-adda-4ae2-97d2-b9758e143aa2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ProximoDialogo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -171,6 +209,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_GetItem = m_Player.FindAction("GetItem", throwIfNotFound: true);
         m_Player_Inventario = m_Player.FindAction("Inventario", throwIfNotFound: true);
+        m_Player_SairEsc = m_Player.FindAction("SairEsc", throwIfNotFound: true);
+        m_Player_ProximoDialogo = m_Player.FindAction("ProximoDialogo", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -225,6 +265,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_GetItem;
     private readonly InputAction m_Player_Inventario;
+    private readonly InputAction m_Player_SairEsc;
+    private readonly InputAction m_Player_ProximoDialogo;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -234,6 +276,8 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @GetItem => m_Wrapper.m_Player_GetItem;
         public InputAction @Inventario => m_Wrapper.m_Player_Inventario;
+        public InputAction @SairEsc => m_Wrapper.m_Player_SairEsc;
+        public InputAction @ProximoDialogo => m_Wrapper.m_Player_ProximoDialogo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -258,6 +302,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Inventario.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventario;
                 @Inventario.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventario;
                 @Inventario.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInventario;
+                @SairEsc.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSairEsc;
+                @SairEsc.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSairEsc;
+                @SairEsc.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSairEsc;
+                @ProximoDialogo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
+                @ProximoDialogo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
+                @ProximoDialogo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -277,6 +327,12 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Inventario.started += instance.OnInventario;
                 @Inventario.performed += instance.OnInventario;
                 @Inventario.canceled += instance.OnInventario;
+                @SairEsc.started += instance.OnSairEsc;
+                @SairEsc.performed += instance.OnSairEsc;
+                @SairEsc.canceled += instance.OnSairEsc;
+                @ProximoDialogo.started += instance.OnProximoDialogo;
+                @ProximoDialogo.performed += instance.OnProximoDialogo;
+                @ProximoDialogo.canceled += instance.OnProximoDialogo;
             }
         }
     }
@@ -288,5 +344,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnGetItem(InputAction.CallbackContext context);
         void OnInventario(InputAction.CallbackContext context);
+        void OnSairEsc(InputAction.CallbackContext context);
+        void OnProximoDialogo(InputAction.CallbackContext context);
     }
 }

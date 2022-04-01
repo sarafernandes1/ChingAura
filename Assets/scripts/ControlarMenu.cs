@@ -9,8 +9,8 @@ public class ControlarMenu : MonoBehaviour
     void Start()
     {
         //Torna o rato visivel; o controlador em primeira pessoa desativa o rato
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
+        //Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame

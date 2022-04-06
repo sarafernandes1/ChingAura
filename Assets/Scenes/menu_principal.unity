@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afbb13e03c23053408da42811c091c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crosshair: {fileID: 2800000, guid: b017dfab3916c1342b99c499d7ab500b, type: 3}
+  crosshair: {fileID: 2800000, guid: 65a8b459afd0a044186d1a096c504ba8, type: 3}
 --- !u!4 &1332102857
 Transform:
   m_ObjectHideFlags: 0

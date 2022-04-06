@@ -9,17 +9,13 @@ public class minku_script : MonoBehaviour
     public Collider zorri, robert;
     public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
-    // mac -> maçã
-    // n -> noz
-    // g-> groselha
-    // a -> amora
-    // mal -> malagueta
-    // cen -> cenoura
+    public Collider[] meuros_collider;
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
-    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert;
-    public int numero_meuros = 20;
+    public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert, d_meuros;
+    public int numeromeuros = 0;
     public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura, button_troca;
+    public bool tem_saco = false;
 
     void Start()
     {
@@ -29,6 +25,22 @@ public class minku_script : MonoBehaviour
     void Update()
     {
         // APANHAR OS ITENS
+
+        //meuros
+        for (int i = 0; i < meuros_collider.Length; i++)
+        {
+            if (meuros_collider[i] != null)
+            {
+                d_meuros = Vector3.Distance(transform.position, meuros_collider[i].transform.position);
+                if (d_meuros < 3.0f && inputController.GetPlayerItem())
+                {
+                    numeromeuros++;
+                    n_meuros.text = numeromeuros.ToString();
+                    meuros_collider[i] = null;
+                }
+            }
+        }
+
         // maçãs
         for (int i = 0; i < maca.Length; i++)
         {
@@ -123,63 +135,63 @@ public class minku_script : MonoBehaviour
         // haja meuros sufecientes, a compra é feita
         d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
         d_robert = Vector3.Distance(transform.position, robert.transform.position);
-        if (d_zorii < 6.0f)
+        if (d_zorii < 6.0f && tem_saco)
         {
-            if (compra_macas.name == "acesso maca concedido" && numero_meuros >= 5)
+            if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
             {
-                numero_meuros -= 5;
+                numeromeuros -= 5;
                 q_maca++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_mac.text = q_maca.ToString();
                 compra_macas.name = "a";
 
             }
 
-            if (compra_noz.name == "acesso noz concedido" && numero_meuros >= 2)
+            if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
             {
-                numero_meuros -= 2;
+                numeromeuros -= 2;
                 q_noz++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_n.text = q_noz.ToString();
                 compra_noz.name = "noz";
 
             }
 
-            if (compra_amora.name == "acesso amora concedido" && numero_meuros >= 3)
+            if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
             {
-                numero_meuros -= 3;
+                numeromeuros -= 3;
                 q_amora++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_a.text = q_amora.ToString();
                 compra_amora.name = "amora";
 
             }
 
-            if (compra_groselha.name == "acesso groselha concedido" && numero_meuros >= 3)
+            if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
             {
-                numero_meuros -= 3;
+                numeromeuros -= 3;
                 q_groselha++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_g.text = q_groselha.ToString();
                 compra_groselha.name = "groselha";
 
             }
 
-            if (compra_malagueta.name == "acesso malagueta concedido" && numero_meuros >= 13)
+            if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
             {
-                numero_meuros -= 13;
+                numeromeuros -= 13;
                 q_malagueta++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_mal.text = q_malagueta.ToString();
                 compra_malagueta.name = "malagueta";
 
             }
 
-            if (compra_cenoura.name == "acesso cenoura concedido" && numero_meuros >= 20)
+            if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
             {
-                numero_meuros -= 20;
+                numeromeuros -= 20;
                 q_cenoura++;
-                n_meuros.text = numero_meuros.ToString();
+                n_meuros.text = numeromeuros.ToString();
                 n_cen.text = q_cenoura.ToString();
                 compra_cenoura.name = "cenoura";
 
@@ -187,7 +199,7 @@ public class minku_script : MonoBehaviour
         }
 
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() || d_zorii < 6.0f && inputController.GetPlayerItem() ||
+        if (inputController.GetPlayerInventario() || d_zorii < 6.0f && inputController.GetPlayerItem() && tem_saco ||
             d_robert<6.0f && inputController.GetPlayerItem())
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
@@ -204,7 +216,7 @@ public class minku_script : MonoBehaviour
             n_cen.enabled = !n_cen.enabled;
             icen.enabled = !icen.enabled;
             n_meuros.enabled = !n_meuros.enabled;
-            n_meuros.text = numero_meuros.ToString();
+            n_meuros.text = numeromeuros.ToString();
         }
 
         // Troca de informação por cenouras

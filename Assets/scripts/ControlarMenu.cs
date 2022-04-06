@@ -5,12 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ControlarMenu : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
         //Torna o rato visivel; o controlador em primeira pessoa desativa o rato
-        //Cursor.visible = true;
-        //Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
@@ -22,7 +23,6 @@ public class ControlarMenu : MonoBehaviour
     public void NewGameClick() //função a ser chamada atarvés do inspector do Botão (ver Button na Scene)
     {
         Debug.Log("new game click");
-        Cursor.visible = false;
         SceneManager.LoadScene(1); //SceneManager.LoadScene("SampleScene"); //faz load de uma nova Scene
     }
 

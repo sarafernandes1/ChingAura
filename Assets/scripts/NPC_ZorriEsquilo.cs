@@ -9,11 +9,11 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public float distancetoMinku;
     public InputController inputController;
     public RawImage fundo;
-    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros;
+    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros, mensagem_lojafechada;
     public CharacterController characterController;
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura;
     public int numero_meuros;
-    private bool to_inteiro;
+    private bool to_inteiro, tem_saco=false;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     {
         to_inteiro = int.TryParse(tmeuros.text, out numero_meuros);
         distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distancetoMinku<6.0f && inputController.GetPlayerItem())
+        if(distancetoMinku<6.0f && inputController.GetPlayerItem() && tem_saco)
         {
             characterController.enabled = false;
             fundo.enabled = !fundo.enabled;
@@ -53,6 +53,12 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         if (!fundo.enabled)
         {
             characterController.enabled = true;
+        }
+
+        if (!tem_saco && distancetoMinku < 6.0f && inputController.GetPlayerItem())
+        {
+            mensagem_lojafechada.enabled = !mensagem_lojafechada.enabled;
+            mensagem_lojafechada.text = "Loja indisponivel";
         }
 
         // Ativar ou desativar os butoes de compra, dependendo do número de meuros

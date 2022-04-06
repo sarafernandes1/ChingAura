@@ -13,20 +13,19 @@ public class Dialogos : MonoBehaviour
     private string[] dialogos;
     public Button continuar;
     int i=0;
+    bool dialogo_fim;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         dialogos = new string[2];
         dialogos[0] = "Ola";
         dialogos[1] = "ola";
         distancetoNPC = Vector3.Distance(npc.transform.position, jogador.transform.position);
-        if (distancetoNPC < 3.0f && inputController.GetPlayerItem())
+        if (distancetoNPC < 3.0f && inputController.GetPlayerItem() && !dialogo_fim)
         {
             caixa_texto.enabled = true;
             texto.enabled = true;
@@ -37,18 +36,20 @@ public class Dialogos : MonoBehaviour
 
         if (texto.enabled)
         {
-            for (int j = 0; j < 2; j++)
+            for (int j = 0; j < dialogos.Length; j++)
             {
                 if (i < 2)
                 {
                     texto.text = dialogos[i];
                     if (i % 2 == 0)
                     {
+                        texto_2.text = "Minku";
                         icon_minku.enabled = true;
                         icon_npc.enabled = false;
                     }
                     else
                     {
+                        texto_2.text = "NPC";
                         icon_npc.enabled = true;
                         icon_minku.enabled = false;
                     }
@@ -66,7 +67,7 @@ public class Dialogos : MonoBehaviour
                             icon_minku.enabled = false;
                             continuar.name = "a";
                             continuar.image.enabled = false;
-
+                            dialogo_fim = true;
                             t3.enabled = false;
                         }
                     }

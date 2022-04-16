@@ -40,12 +40,13 @@ public class SimpleCollectibleScript : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.tag == "Player" ) {
-			Collect ();
-		}
-	}
+	//void OnTriggerEnter(Collider other)
+	//{
+	//	if (other.tag == "Player" ) {
+	//		Collect();
+	//		transform.name = "coletado";
+	//	}
+	//}
 
 	public void Collect()
 	{

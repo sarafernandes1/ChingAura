@@ -7,7 +7,7 @@ public class minku_script : MonoBehaviour
 {
     public InputController inputController;
     public Collider zorri, robert;
-    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen;
+    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     public Collider[] meuros_collider;
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
@@ -211,6 +211,7 @@ public class minku_script : MonoBehaviour
             igroselha.enabled = !igroselha.enabled;
             n_a.enabled = !n_a.enabled;
             iamora.enabled = !iamora.enabled;
+            imeuros.enabled = !imeuros.enabled;
             n_mal.enabled = !n_mal.enabled;
             imal.enabled = !imal.enabled;
             n_cen.enabled = !n_cen.enabled;

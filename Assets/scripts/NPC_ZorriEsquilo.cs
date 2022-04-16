@@ -14,6 +14,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura;
     public int numero_meuros;
     private bool to_inteiro, tem_saco=false;
+    public Collider saco_fruta;
 
     void Start()
     {
@@ -22,9 +23,15 @@ public class NPC_ZorriEsquilo : MonoBehaviour
 
     void Update()
     {
+
+        if (saco_fruta == null)
+        {
+            tem_saco = true;
+        }
+
         to_inteiro = int.TryParse(tmeuros.text, out numero_meuros);
         distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distancetoMinku<6.0f && inputController.GetPlayerItem() && tem_saco)
+        if(distancetoMinku<8.0f && inputController.GetPlayerItem() && tem_saco)
         {
             characterController.enabled = false;
             fundo.enabled = !fundo.enabled;
@@ -55,7 +62,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             characterController.enabled = true;
         }
 
-        if (!tem_saco && distancetoMinku < 6.0f && inputController.GetPlayerItem())
+        if (!tem_saco && distancetoMinku < 8.0f && inputController.GetPlayerItem())
         {
             mensagem_lojafechada.enabled = !mensagem_lojafechada.enabled;
             mensagem_lojafechada.text = "Loja indisponivel";

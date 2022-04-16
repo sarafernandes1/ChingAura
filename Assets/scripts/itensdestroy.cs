@@ -20,7 +20,7 @@ public class itensdestroy : MonoBehaviour
         // Se o item é apanhado é destruido 
         // assim, não vai ser novamente apanhado
         distancetoJogador = Vector3.Distance(transform.position, jogador.transform.position);
-        if (distancetoJogador < 3.0f && inputController.GetPlayerItem())
+        if (distancetoJogador < 5.0f && inputController.GetPlayerItem())
         {
             Collect();
             Destroy(gameObject);

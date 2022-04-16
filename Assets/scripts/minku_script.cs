@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class minku_script : MonoBehaviour
 {
     public InputController inputController;
-    public Collider zorri, robert;
+    public Collider zorri, robert, saco_fruta;
     public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     public Collider[] meuros_collider;
@@ -135,7 +135,8 @@ public class minku_script : MonoBehaviour
         // haja meuros sufecientes, a compra é feita
         d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
         d_robert = Vector3.Distance(transform.position, robert.transform.position);
-        if (d_zorii < 6.0f && tem_saco)
+        if (saco_fruta==null) tem_saco = true;
+        if (d_zorii < 8.0f && tem_saco)
         {
             if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
             {

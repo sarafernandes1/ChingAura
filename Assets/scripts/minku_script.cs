@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class minku_script : MonoBehaviour
 {
     public InputController inputController;
-    public Collider zorri, robert, saco_fruta;
+    public Collider zorri, /*robert,*/ saco_fruta;
     public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     public Collider[] meuros_collider;
@@ -14,16 +14,23 @@ public class minku_script : MonoBehaviour
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
     public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert, d_meuros;
     public int numeromeuros = 0;
-    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura, button_troca;
+    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
     public bool tem_saco = false;
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
+        numeromeuros = PlayerPrefs.GetInt("numeromeuros");
+        q_maca = PlayerPrefs.GetInt("numeromaca");
+        q_noz = PlayerPrefs.GetInt("numeronoz");
+        q_amora = PlayerPrefs.GetInt("numeroamora");
+        q_groselha = PlayerPrefs.GetInt("numerogroselha");
+        q_malagueta = PlayerPrefs.GetInt("numeromalagueta");
+        q_cenoura = PlayerPrefs.GetInt("numerocenoura");
         // APANHAR OS ITENS
 
         //meuros
@@ -32,11 +39,12 @@ public class minku_script : MonoBehaviour
             if (meuros_collider[i] != null)
             {
                 d_meuros = Vector3.Distance(transform.position, meuros_collider[i].transform.position);
-                if (d_meuros < 3.0f && inputController.GetPlayerItem())
+                if (d_meuros < 5.0f && inputController.GetPlayerItem())
                 {
                     numeromeuros++;
                     n_meuros.text = numeromeuros.ToString();
                     meuros_collider[i] = null;
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
             }
         }
@@ -47,11 +55,12 @@ public class minku_script : MonoBehaviour
             if (maca[i] != null)
             {
                 d_maca = Vector3.Distance(transform.position, maca[i].transform.position);
-                if (d_maca < 3.0f && inputController.GetPlayerItem())
+                if (d_maca < 5.0f && inputController.GetPlayerItem())
                 {
                     q_maca++;
                     n_mac.text = q_maca.ToString();
                     maca[i] = null;
+                    PlayerPrefs.SetInt("numeromaca", q_maca);
                 }
             }
         }
@@ -62,11 +71,12 @@ public class minku_script : MonoBehaviour
             if (noz[i] != null)
             {
                 d_noz = Vector3.Distance(transform.position, noz[i].transform.position);
-                if (d_noz < 3.0f && inputController.GetPlayerItem())
+                if (d_noz < 5.0f && inputController.GetPlayerItem())
                 {
                     q_noz++;
                     n_n.text = q_noz.ToString();
                     noz[i] = null;
+                    PlayerPrefs.SetInt("numeronoz", q_noz);
                 }
             }
         }
@@ -77,11 +87,12 @@ public class minku_script : MonoBehaviour
             if (amora[i] != null)
             {
                 d_amora = Vector3.Distance(transform.position, amora[i].transform.position);
-                if (d_amora < 3.0f && inputController.GetPlayerItem())
+                if (d_amora < 5.0f && inputController.GetPlayerItem())
                 {
                     q_amora++;
                     n_a.text = q_amora.ToString();
                     amora[i] = null;
+                    PlayerPrefs.SetInt("numeroamora", q_amora);
                 }
             }
         }
@@ -92,11 +103,12 @@ public class minku_script : MonoBehaviour
             if (groselha[i] != null)
             {
                 d_groselha = Vector3.Distance(transform.position, groselha[i].transform.position);
-                if (d_groselha < 3.0f && inputController.GetPlayerItem())
+                if (d_groselha < 5.0f && inputController.GetPlayerItem())
                 {
                     q_groselha++;
                     n_g.text = q_groselha.ToString();
                     groselha[i] = null;
+                    PlayerPrefs.SetInt("numerogroselha", q_groselha);
                 }
             }
         }
@@ -107,11 +119,12 @@ public class minku_script : MonoBehaviour
             if (malagueta[i] != null)
             {
                 d_malagueta = Vector3.Distance(transform.position, malagueta[i].transform.position);
-                if (d_malagueta < 3.0f && inputController.GetPlayerItem())
+                if (d_malagueta < 5.0f && inputController.GetPlayerItem())
                 {
                     q_malagueta++;
                     n_mal.text = q_malagueta.ToString();
                     malagueta[i] = null;
+                    PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
                 }
             }
         }
@@ -122,11 +135,12 @@ public class minku_script : MonoBehaviour
             if (cenoura[i] != null)
             {
                 d_cenoura = Vector3.Distance(transform.position, cenoura[i].transform.position);
-                if (d_cenoura < 3.0f && inputController.GetPlayerItem())
+                if (d_cenoura < 5.0f && inputController.GetPlayerItem())
                 {
                     q_cenoura++;
                     n_cen.text = q_cenoura.ToString();
                     cenoura[i] = null;
+                    PlayerPrefs.SetInt("numerocenoura", q_cenoura);
                 }
             }
         }
@@ -134,9 +148,25 @@ public class minku_script : MonoBehaviour
         // se a distancia há loja do zorii for menor que 3, o botão de compra tenha sido premido e
         // haja meuros sufecientes, a compra é feita
         d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
-        d_robert = Vector3.Distance(transform.position, robert.transform.position);
-        if (saco_fruta==null) tem_saco = true;
-        if (d_zorii < 8.0f && tem_saco)
+        //d_robert = Vector3.Distance(transform.position, robert.transform.position);
+        if (saco_fruta != null)
+        {
+            float d_saco = Vector3.Distance(transform.position, saco_fruta.transform.position);
+            if (d_saco < 5.0f && inputController.GetPlayerItem())
+            {
+                tem_saco = true;
+                PlayerPrefs.SetInt("temsaco", 1);
+            }
+            int saco = PlayerPrefs.GetInt("temsaco");
+            if (saco == 1) tem_saco = true;
+            else tem_saco = false;
+        }
+        else
+        {
+            PlayerPrefs.SetInt("temsaco", 0);
+        }
+
+        if (d_zorii < 12.0f && tem_saco)
         {
             if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
             {
@@ -145,7 +175,7 @@ public class minku_script : MonoBehaviour
                 n_meuros.text = numeromeuros.ToString();
                 n_mac.text = q_maca.ToString();
                 compra_macas.name = "a";
-
+                PlayerPrefs.SetInt("numeromaca", q_maca);
             }
 
             if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
@@ -155,7 +185,7 @@ public class minku_script : MonoBehaviour
                 n_meuros.text = numeromeuros.ToString();
                 n_n.text = q_noz.ToString();
                 compra_noz.name = "noz";
-
+                PlayerPrefs.SetInt("numeronoz", q_noz);
             }
 
             if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
@@ -165,6 +195,7 @@ public class minku_script : MonoBehaviour
                 n_meuros.text = numeromeuros.ToString();
                 n_a.text = q_amora.ToString();
                 compra_amora.name = "amora";
+                PlayerPrefs.SetInt("numeroamora", q_amora);
 
             }
 
@@ -175,6 +206,7 @@ public class minku_script : MonoBehaviour
                 n_meuros.text = numeromeuros.ToString();
                 n_g.text = q_groselha.ToString();
                 compra_groselha.name = "groselha";
+                PlayerPrefs.SetInt("numerogroselha", q_groselha);
 
             }
 
@@ -186,6 +218,7 @@ public class minku_script : MonoBehaviour
                 n_mal.text = q_malagueta.ToString();
                 compra_malagueta.name = "malagueta";
 
+                PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
             }
 
             if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
@@ -195,13 +228,14 @@ public class minku_script : MonoBehaviour
                 n_meuros.text = numeromeuros.ToString();
                 n_cen.text = q_cenoura.ToString();
                 compra_cenoura.name = "cenoura";
+                PlayerPrefs.SetInt("numerocenoura", q_cenoura);
 
             }
         }
 
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() || d_zorii < 6.0f && inputController.GetPlayerItem() && tem_saco ||
-            d_robert<6.0f && inputController.GetPlayerItem())
+        if (inputController.GetPlayerInventario() || d_zorii < 12.0f && inputController.GetPlayerItem() && tem_saco /*||*/
+            /*d_robert<6.0f && inputController.GetPlayerItem()*/)
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
             n_mac.enabled = !n_mac.enabled;
@@ -219,11 +253,17 @@ public class minku_script : MonoBehaviour
             icen.enabled = !icen.enabled;
             n_meuros.enabled = !n_meuros.enabled;
             n_meuros.text = numeromeuros.ToString();
+            n_mac.text = q_maca.ToString();
+            n_meuros.text = numeromeuros.ToString();
+            n_n.text = q_noz.ToString();
+            n_a.text = q_amora.ToString();
+            n_g.text = q_groselha.ToString();
+            n_mal.text = q_malagueta.ToString();
+            n_cen.text = q_cenoura.ToString();
         }
 
-        // Troca de informação por cenouras
-        if (q_cenoura > 0) button_troca.interactable = true;
-        else button_troca.interactable = false;
-
+        //// Troca de informação por cenouras
+        //if (q_cenoura > 0) button_troca.interactable = true;
+        //else button_troca.interactable = false;
     }
 }

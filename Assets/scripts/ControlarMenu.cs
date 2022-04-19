@@ -26,6 +26,18 @@ public class ControlarMenu : MonoBehaviour
         SceneManager.LoadScene(1); //SceneManager.LoadScene("SampleScene"); //faz load de uma nova Scene
     }
 
+    public void SettingMenuScene()
+    {
+        Debug.Log("setting menu");
+        SceneManager.LoadScene(2);
+    }
+
+    public void VoltarMenu()
+    {
+        Debug.Log("voltar menu");
+        SceneManager.LoadScene(0);
+    }
+
     public void ExitClick() //função a ser chamada atarvés do inspector do Botão (ver Button (1) na Scene)
     {
         Debug.Log("exit click");

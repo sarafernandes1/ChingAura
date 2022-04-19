@@ -24,7 +24,6 @@ public class MostrarNomeArea : MonoBehaviour
         {
              texto_nome.enabled = true;
              imagem.enabled = true;
-             texto_nome.text = transform.name;
             timer-=0.2f;
             
             if (timer < 0 || !isInArea)

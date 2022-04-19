@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class door_controler : MonoBehaviour
 {
-    public Animator animator;
-    public AudioSource audio;
-    public Collider minku;
+    public GameObject minku;
+    public Collider minku_collider;
+    public Camera maincamera;
     public float distanceToCamera;
     public bool isInArea;
     public InputController inputController;
+    public Button buttonimage;
+    public Text textobutton;
+    public Text numero_meuros;
 
     void Start()
     {
@@ -19,22 +23,6 @@ public class door_controler : MonoBehaviour
 
     void Update()
     {
-        distanceToCamera = Vector3.Distance(transform.position, minku.transform.position);
-        if (inputController.GetPlayerItem() && distanceToCamera<2.0f)
-        {
-            bool doorState = animator.GetBool("door_open");
-            audio.mute = false;
-            if (doorState)
-            {
-                animator.SetBool("door_open", false);
-                audio.Play();
-            }
-            else
-            {
-                audio.Play();
-                animator.SetBool("door_open", true);
-            }
-        }
     }
 
     //Pode ser chamado se o objeto onde o script está associado tiver um Collider com o isTrigger == true
@@ -43,6 +31,8 @@ public class door_controler : MonoBehaviour
         if (other.tag == "Player" )
         {
             isInArea = true;
+            buttonimage.image.enabled = true;
+            textobutton.enabled = true; 
         }
     }
 
@@ -52,5 +42,24 @@ public class door_controler : MonoBehaviour
         {
             isInArea = false;
         }
+    }
+    public void IrparaTemplo()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void VoltarTemplo()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void VoltarVila()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void IrparaFloresta()
+    {
+        SceneManager.LoadScene(3);
     }
 }

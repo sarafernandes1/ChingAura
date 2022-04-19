@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/menu_principal.unity
-    guid: b3646af0b1fbfdc429af313d423cb601
   - enabled: 1
     path: Assets/Scenes/menu_principal 1.unity
     guid: ab0283732d7352440808868750c30681
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Vila.unity
+    guid: 97220e9d089779b48aa29396cc5b4201
+  - enabled: 1
+    path: Assets/Scenes/Templo.unity
+    guid: a79ce711a9f511341a354ccb163868f7
+  - enabled: 1
+    path: Assets/Scenes/Floresta.unity
+    guid: f3711362c9a7c8849902a9f01c1a6417
   m_configObjects: {}

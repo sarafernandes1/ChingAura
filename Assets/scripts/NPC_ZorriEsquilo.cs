@@ -23,8 +23,8 @@ public class NPC_ZorriEsquilo : MonoBehaviour
 
     void Update()
     {
-
-        if (saco_fruta == null)
+        int saco = PlayerPrefs.GetInt("temsaco");
+        if (saco==1)
         {
             tem_saco = true;
         }
@@ -62,7 +62,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             characterController.enabled = true;
         }
 
-        if (!tem_saco && distancetoMinku < 8.0f && inputController.GetPlayerItem())
+        if (!tem_saco && distancetoMinku < 12.0f && inputController.GetPlayerItem())
         {
             mensagem_lojafechada.enabled = !mensagem_lojafechada.enabled;
             mensagem_lojafechada.text = "Loja indisponivel";

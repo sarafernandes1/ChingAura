@@ -165,7 +165,7 @@ public class minku_script : MonoBehaviour
                 else tem_saco = false;
             }
 
-            if (d_zorii < 12.0f && tem_saco)
+            if (d_zorii < 12.0f && PlayerPrefs.GetInt("temsaco") == 1)
             {
                 if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
                 {
@@ -175,6 +175,7 @@ public class minku_script : MonoBehaviour
                     n_mac.text = q_maca.ToString();
                     compra_macas.name = "a";
                     PlayerPrefs.SetInt("numeromaca", q_maca);
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
                 if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
@@ -185,6 +186,7 @@ public class minku_script : MonoBehaviour
                     n_n.text = q_noz.ToString();
                     compra_noz.name = "noz";
                     PlayerPrefs.SetInt("numeronoz", q_noz);
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
                 if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
@@ -196,6 +198,7 @@ public class minku_script : MonoBehaviour
                     compra_amora.name = "amora";
                     PlayerPrefs.SetInt("numeroamora", q_amora);
 
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
                 if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
@@ -207,6 +210,7 @@ public class minku_script : MonoBehaviour
                     compra_groselha.name = "groselha";
                     PlayerPrefs.SetInt("numerogroselha", q_groselha);
 
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
                 if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
@@ -217,6 +221,7 @@ public class minku_script : MonoBehaviour
                     n_mal.text = q_malagueta.ToString();
                     compra_malagueta.name = "malagueta";
 
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                     PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
                 }
 
@@ -229,6 +234,7 @@ public class minku_script : MonoBehaviour
                     compra_cenoura.name = "cenoura";
                     PlayerPrefs.SetInt("numerocenoura", q_cenoura);
 
+                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
             }
         }

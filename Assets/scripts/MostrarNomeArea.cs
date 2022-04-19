@@ -9,7 +9,7 @@ public class MostrarNomeArea : MonoBehaviour
     public bool isInArea, a=true;
     public string nome_do_sitio;
     public RawImage imagem;
-    public float timer = 1000.0f;
+    public float timer = 150.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,7 @@ public class MostrarNomeArea : MonoBehaviour
         {
              texto_nome.enabled = true;
              imagem.enabled = true;
-            timer-=0.2f;
+            timer-=0.4f;
             
             if (timer < 0 || !isInArea)
             {

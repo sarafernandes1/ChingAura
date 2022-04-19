@@ -23,7 +23,7 @@ public class minku_script : MonoBehaviour
 
     void Update()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
 
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
@@ -164,10 +164,6 @@ public class minku_script : MonoBehaviour
                 if (saco == 1) tem_saco = true;
                 else tem_saco = false;
             }
-            else
-            {
-                PlayerPrefs.SetInt("temsaco", 0);
-            }
 
             if (d_zorii < 12.0f && tem_saco)
             {
@@ -238,7 +234,9 @@ public class minku_script : MonoBehaviour
         }
 
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() || d_zorii < 12.0f && inputController.GetPlayerItem() && tem_saco /*||*/
+        if (inputController.GetPlayerInventario() || d_zorii < 12.0f && inputController.GetPlayerItem() 
+            && PlayerPrefs.GetInt("temsaco")==1
+            /*||*/
             /*d_robert<6.0f && inputController.GetPlayerItem()*/)
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;

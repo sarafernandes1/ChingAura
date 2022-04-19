@@ -19,11 +19,12 @@ public class minku_script : MonoBehaviour
 
     void Start()
     {
-
     }
 
     void Update()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
         q_noz = PlayerPrefs.GetInt("numeronoz");
@@ -147,89 +148,92 @@ public class minku_script : MonoBehaviour
 
         // se a distancia há loja do zorii for menor que 3, o botão de compra tenha sido premido e
         // haja meuros sufecientes, a compra é feita
-        d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
-        //d_robert = Vector3.Distance(transform.position, robert.transform.position);
-        if (saco_fruta != null)
+        if (zorri != null)
         {
-            float d_saco = Vector3.Distance(transform.position, saco_fruta.transform.position);
-            if (d_saco < 5.0f && inputController.GetPlayerItem())
+            d_zorii = Vector3.Distance(transform.position, zorri.transform.position);
+            //d_robert = Vector3.Distance(transform.position, robert.transform.position);
+            if (saco_fruta != null)
             {
-                tem_saco = true;
-                PlayerPrefs.SetInt("temsaco", 1);
+                float d_saco = Vector3.Distance(transform.position, saco_fruta.transform.position);
+                if (d_saco < 5.0f && inputController.GetPlayerItem())
+                {
+                    tem_saco = true;
+                    PlayerPrefs.SetInt("temsaco", 1);
+                }
+                int saco = PlayerPrefs.GetInt("temsaco");
+                if (saco == 1) tem_saco = true;
+                else tem_saco = false;
             }
-            int saco = PlayerPrefs.GetInt("temsaco");
-            if (saco == 1) tem_saco = true;
-            else tem_saco = false;
-        }
-        else
-        {
-            PlayerPrefs.SetInt("temsaco", 0);
-        }
-
-        if (d_zorii < 12.0f && tem_saco)
-        {
-            if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
+            else
             {
-                numeromeuros -= 5;
-                q_maca++;
-                n_meuros.text = numeromeuros.ToString();
-                n_mac.text = q_maca.ToString();
-                compra_macas.name = "a";
-                PlayerPrefs.SetInt("numeromaca", q_maca);
+                PlayerPrefs.SetInt("temsaco", 0);
             }
 
-            if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
+            if (d_zorii < 12.0f && tem_saco)
             {
-                numeromeuros -= 2;
-                q_noz++;
-                n_meuros.text = numeromeuros.ToString();
-                n_n.text = q_noz.ToString();
-                compra_noz.name = "noz";
-                PlayerPrefs.SetInt("numeronoz", q_noz);
-            }
+                if (compra_macas.name == "acesso maca concedido" && numeromeuros >= 5)
+                {
+                    numeromeuros -= 5;
+                    q_maca++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_mac.text = q_maca.ToString();
+                    compra_macas.name = "a";
+                    PlayerPrefs.SetInt("numeromaca", q_maca);
+                }
 
-            if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
-            {
-                numeromeuros -= 3;
-                q_amora++;
-                n_meuros.text = numeromeuros.ToString();
-                n_a.text = q_amora.ToString();
-                compra_amora.name = "amora";
-                PlayerPrefs.SetInt("numeroamora", q_amora);
+                if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
+                {
+                    numeromeuros -= 2;
+                    q_noz++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_n.text = q_noz.ToString();
+                    compra_noz.name = "noz";
+                    PlayerPrefs.SetInt("numeronoz", q_noz);
+                }
 
-            }
+                if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
+                {
+                    numeromeuros -= 3;
+                    q_amora++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_a.text = q_amora.ToString();
+                    compra_amora.name = "amora";
+                    PlayerPrefs.SetInt("numeroamora", q_amora);
 
-            if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
-            {
-                numeromeuros -= 3;
-                q_groselha++;
-                n_meuros.text = numeromeuros.ToString();
-                n_g.text = q_groselha.ToString();
-                compra_groselha.name = "groselha";
-                PlayerPrefs.SetInt("numerogroselha", q_groselha);
+                }
 
-            }
+                if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
+                {
+                    numeromeuros -= 3;
+                    q_groselha++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_g.text = q_groselha.ToString();
+                    compra_groselha.name = "groselha";
+                    PlayerPrefs.SetInt("numerogroselha", q_groselha);
 
-            if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
-            {
-                numeromeuros -= 13;
-                q_malagueta++;
-                n_meuros.text = numeromeuros.ToString();
-                n_mal.text = q_malagueta.ToString();
-                compra_malagueta.name = "malagueta";
+                }
 
-                PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
-            }
+                if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
+                {
+                    numeromeuros -= 13;
+                    q_malagueta++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_mal.text = q_malagueta.ToString();
+                    compra_malagueta.name = "malagueta";
 
-            if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
-            {
-                numeromeuros -= 20;
-                q_cenoura++;
-                n_meuros.text = numeromeuros.ToString();
-                n_cen.text = q_cenoura.ToString();
-                compra_cenoura.name = "cenoura";
-                PlayerPrefs.SetInt("numerocenoura", q_cenoura);
+                    PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
+                }
 
+                if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
+                {
+                    numeromeuros -= 20;
+                    q_cenoura++;
+                    n_meuros.text = numeromeuros.ToString();
+                    n_cen.text = q_cenoura.ToString();
+                    compra_cenoura.name = "cenoura";
+                    PlayerPrefs.SetInt("numerocenoura", q_cenoura);
+
+                }
             }
         }
 
@@ -266,4 +270,5 @@ public class minku_script : MonoBehaviour
         //if (q_cenoura > 0) button_troca.interactable = true;
         //else button_troca.interactable = false;
     }
+
 }

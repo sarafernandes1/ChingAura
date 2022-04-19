@@ -30,13 +30,18 @@ public class SimpleCollectibleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		string estado = PlayerPrefs.GetString("coletado" + gameObject.name);
+		if (estado == "true")
+		{
+			Destroy(gameObject);
+		}
 		if (rotate)
 			transform.Rotate (Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
 		distancetoMinku = Vector3.Distance(moeda.transform.position, minku.transform.position);
 		if (distancetoMinku < 3.0f && inputController.GetPlayerItem())
 		{
 			Collect();
+			PlayerPrefs.SetString("coletado" + gameObject.name, "true");
 		}
 	}
 

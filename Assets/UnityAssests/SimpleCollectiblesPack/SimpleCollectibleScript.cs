@@ -38,7 +38,7 @@ public class SimpleCollectibleScript : MonoBehaviour {
 		if (rotate)
 			transform.Rotate (Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
 		distancetoMinku = Vector3.Distance(moeda.transform.position, minku.transform.position);
-		if (distancetoMinku < 3.0f && inputController.GetPlayerItem())
+		if (distancetoMinku < 5.0f && inputController.GetPlayerItem())
 		{
 			Collect();
 			PlayerPrefs.SetString("coletado" + gameObject.name, "true");

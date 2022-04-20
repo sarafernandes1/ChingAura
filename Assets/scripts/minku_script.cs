@@ -23,7 +23,7 @@ public class minku_script : MonoBehaviour
 
     void Update()
     {
-        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
 
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");

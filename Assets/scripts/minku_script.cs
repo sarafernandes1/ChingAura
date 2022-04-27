@@ -13,9 +13,9 @@ public class minku_script : MonoBehaviour
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
     public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert, d_meuros;
-    public int numeromeuros = 0;
+    public int numeromeuros = 0, save=0;
     public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
-    public bool tem_saco = false;
+    public bool tem_saco = false, venda=false;
 
     void Start()
     {
@@ -174,6 +174,7 @@ public class minku_script : MonoBehaviour
                     n_meuros.text = numeromeuros.ToString();
                     n_mac.text = q_maca.ToString();
                     compra_macas.name = "a";
+                    venda = true;
                     PlayerPrefs.SetInt("numeromaca", q_maca);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
@@ -185,6 +186,8 @@ public class minku_script : MonoBehaviour
                     n_meuros.text = numeromeuros.ToString();
                     n_n.text = q_noz.ToString();
                     compra_noz.name = "noz";
+                    venda = true;
+                    PlayerPrefs.SetInt("venda", 1);
                     PlayerPrefs.SetInt("numeronoz", q_noz);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
@@ -196,6 +199,7 @@ public class minku_script : MonoBehaviour
                     n_meuros.text = numeromeuros.ToString();
                     n_a.text = q_amora.ToString();
                     compra_amora.name = "amora";
+                    venda = true;
                     PlayerPrefs.SetInt("numeroamora", q_amora);
 
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
@@ -208,6 +212,7 @@ public class minku_script : MonoBehaviour
                     n_meuros.text = numeromeuros.ToString();
                     n_g.text = q_groselha.ToString();
                     compra_groselha.name = "groselha";
+                    venda = true;
                     PlayerPrefs.SetInt("numerogroselha", q_groselha);
 
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
@@ -221,6 +226,7 @@ public class minku_script : MonoBehaviour
                     n_mal.text = q_malagueta.ToString();
                     compra_malagueta.name = "malagueta";
 
+                    venda = true;
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                     PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
                 }
@@ -231,17 +237,28 @@ public class minku_script : MonoBehaviour
                     q_cenoura++;
                     n_meuros.text = numeromeuros.ToString();
                     n_cen.text = q_cenoura.ToString();
+                    venda = true;
                     compra_cenoura.name = "cenoura";
                     PlayerPrefs.SetInt("numerocenoura", q_cenoura);
 
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
+                }
+
+                if (venda == false)
+                {
+                    PlayerPrefs.SetInt("venda", 0);
+                }
+                else
+                {
+
+                    PlayerPrefs.SetInt("venda", 1);
                 }
             }
         }
 
         // VER INVENTÁRIO, também, abre na loja
         if (inputController.GetPlayerInventario() || d_zorii < 12.0f && inputController.GetPlayerItem() 
-            && PlayerPrefs.GetInt("temsaco")==1
+            && PlayerPrefs.GetInt("temsaco")==1 
             /*||*/
             /*d_robert<6.0f && inputController.GetPlayerItem()*/)
         {

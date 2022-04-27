@@ -10,10 +10,12 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public InputController inputController;
     public RawImage fundo;
     public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros, mensagem_lojafechada;
+    public RawImage caixatexto,npcimagem;
+    public Text texto, nome, textbutton, tb1;
     public CharacterController characterController;
-    public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura;
+    public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura, continuar, continuar1;
     public int numero_meuros;
-    private bool to_inteiro, tem_saco=false;
+    private bool to_inteiro, tem_saco=false, primeiro_dialogo=false, sair=false;
     public Collider saco_fruta;
 
     void Start()
@@ -29,38 +31,74 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             tem_saco = true;
         }
 
+        PlayerPrefs.SetInt("inventarioloja", 1);
         to_inteiro = int.TryParse(tmeuros.text, out numero_meuros);
-        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position);
-        if(distancetoMinku<8.0f && inputController.GetPlayerItem() && tem_saco)
+        distancetoMinku = Vector3.Distance(transform.position, minku.transform.position); 
+        if (distancetoMinku < 12.0f && inputController.GetPlayerItem() && tem_saco
+            && !primeiro_dialogo && !fundo.enabled)
         {
-            characterController.enabled = false;
-            fundo.enabled = !fundo.enabled;
-            m.enabled = !m.enabled;
-            n.enabled = !n.enabled;
-            a.enabled = !a.enabled;
-            g.enabled = !g.enabled;
-            c.enabled = !c.enabled;
-            mal.enabled = !mal.enabled;
-            c_maca.image.enabled = !c_maca.image.enabled;
-            buttontext.enabled = !buttontext.enabled;
-            c_noz.image.enabled = !c_noz.image.enabled;
-            bt2.enabled = !bt2.enabled;
-            c_amora.image.enabled = !c_amora.image.enabled;
-            bt3.enabled = !bt3.enabled;
-            c_groselha.image.enabled = !c_groselha.image.enabled;
-            bt4.enabled = !bt4.enabled;
-            c_malagueta.image.enabled = !c_malagueta.image.enabled;
-            bt5.enabled = !bt5.enabled;
-            c_cenoura.image.enabled = !c_cenoura.image.enabled;
-            bt6.enabled = !bt6.enabled;
+            texto.text = "Saudações meu caro, o que vai comprar hoje?";
+            caixatexto.enabled = true;
+            npcimagem.enabled = true;
+            continuar.image.enabled = true;
+            textbutton.enabled = true;
+            texto.enabled = true;
+            nome.enabled = true;
         }
 
-        // Quando está na loja, não se consegue mexer
-        // quando sai o jogador já pode se movimentar
-        if (!fundo.enabled)
+        if (distancetoMinku<12.0f && tem_saco && primeiro_dialogo)
         {
-            characterController.enabled = true;
+            caixatexto.enabled = false;
+            npcimagem.enabled = false;
+            continuar.image.enabled = false;
+            textbutton.enabled = false;
+            texto.enabled = false;
+            nome.enabled = false;
+            continuar.name = "a";
+            fundo.enabled = true;
+            m.enabled = true;
+            n.enabled = true;
+            a.enabled = true;
+            g.enabled = true;
+            c.enabled = true;
+            mal.enabled = true;
+            c_maca.image.enabled = true;
+            buttontext.enabled = true;
+            c_noz.image.enabled = true;
+            bt2.enabled = true;
+            c_amora.image.enabled = true;
+            bt3.enabled = true;
+            c_groselha.image.enabled = true;
+            bt4.enabled = true;
+            c_malagueta.image.enabled = true;
+            bt5.enabled = true;
+            c_cenoura.image.enabled = true;
+            bt6.enabled = true;
         }
+        if (distancetoMinku < 12.0f && tem_saco && primeiro_dialogo && inputController.GetPlayerItem())
+        {
+            fundo.enabled = false;
+            m.enabled = false;
+            n.enabled = false;
+            a.enabled = false;
+            g.enabled = false;
+            c.enabled = false;
+            mal.enabled = false;
+            c_maca.image.enabled =false;
+            buttontext.enabled = false;
+            c_noz.image.enabled = false;
+            bt2.enabled = false;
+            c_amora.image.enabled = false;
+            bt3.enabled = false;
+            c_groselha.image.enabled = false;
+            bt4.enabled = false;
+            c_malagueta.image.enabled = false;
+            bt5.enabled =false;
+            c_cenoura.image.enabled = false;
+            bt6.enabled = false;
+            primeiro_dialogo = false;
+        }
+
 
         if (!tem_saco && distancetoMinku < 12.0f && inputController.GetPlayerItem())
         {
@@ -82,6 +120,19 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         else c_malagueta.interactable = false;
         if (numero_meuros >= 20) c_cenoura.interactable = true;
         else c_cenoura.interactable = false;
+
+       
+    }
+
+    public void Continuar()
+    {
+        continuar.name = "continuar";
+        primeiro_dialogo = true;
+    }
+
+    public void SairLoja()
+    {
+        continuar1.name = "sair";
     }
 
     // Quando clica no botão, compra itens

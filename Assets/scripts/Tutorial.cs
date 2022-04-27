@@ -18,10 +18,6 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (inputController.GetPlayerItem())
-        {
-            texto_tutorial.enabled = false;
-        }
     }
 
     private void OnTriggerEnter(Collider other) //qd entra no trigger

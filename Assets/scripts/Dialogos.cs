@@ -89,6 +89,7 @@ public class Dialogos : MonoBehaviour
     public void Continuar()
     {
         continuar.name= "continuar";
+        PlayerPrefs.SetInt("inventarioloja", 0);
     }
       
 

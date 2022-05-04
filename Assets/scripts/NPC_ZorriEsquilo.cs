@@ -15,7 +15,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public CharacterController characterController;
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura, continuar, continuar1;
     public int numero_meuros;
-    private bool to_inteiro, tem_saco=false, primeiro_dialogo=false, sair=false;
+    private bool to_inteiro, tem_saco=false, primeiro_dialogo=false;
     public Collider saco_fruta;
 
     void Start()
@@ -120,8 +120,6 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         else c_malagueta.interactable = false;
         if (numero_meuros >= 20) c_cenoura.interactable = true;
         else c_cenoura.interactable = false;
-
-       
     }
 
     public void Continuar()
@@ -166,5 +164,4 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         Debug.Log("compra");
         c_cenoura.name = "acesso cenoura concedido";
     }
-
 }

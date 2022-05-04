@@ -11,7 +11,8 @@
                     "id": "8f137bbf-ac85-4aa8-94ca-31175a5c742d",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "eb9b61c4-556c-4077-873e-4e83ab0e9927",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Look",
@@ -27,7 +29,8 @@
                     "id": "4dfb1b5a-76d6-4dc2-afde-349fde72cf2c",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "GetItem",
@@ -35,7 +38,8 @@
                     "id": "297e6684-fdc6-44a6-a907-846941b7c0ab",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Inventario",
@@ -43,7 +47,8 @@
                     "id": "8ad959f4-08e4-45e2-95ee-ec4186ae94f4",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "SairEsc",
@@ -51,7 +56,8 @@
                     "id": "13c1d63e-8e17-453d-b60d-d607cc39fb39",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ProximoDialogo",
@@ -59,7 +65,8 @@
                     "id": "74613a2c-a2bc-4b98-ba23-78cf53390e21",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -176,7 +183,7 @@
                 {
                     "name": "",
                     "id": "ef712ba4-adda-4ae2-97d2-b9758e143aa2",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

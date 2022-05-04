@@ -23,7 +23,7 @@ public class minku_script : MonoBehaviour
 
     void Update()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
 
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
@@ -32,119 +32,15 @@ public class minku_script : MonoBehaviour
         q_groselha = PlayerPrefs.GetInt("numerogroselha");
         q_malagueta = PlayerPrefs.GetInt("numeromalagueta");
         q_cenoura = PlayerPrefs.GetInt("numerocenoura");
+        
         // APANHAR OS ITENS
-
-        //meuros
-        for (int i = 0; i < meuros_collider.Length; i++)
-        {
-            if (meuros_collider[i] != null)
-            {
-                d_meuros = Vector3.Distance(transform.position, meuros_collider[i].transform.position);
-                if (d_meuros < 5.0f && inputController.GetPlayerItem())
-                {
-                    numeromeuros++;
-                    n_meuros.text = numeromeuros.ToString();
-                    meuros_collider[i] = null;
-                    PlayerPrefs.SetInt("numeromeuros", numeromeuros);
-                }
-            }
-        }
-
-        // maçãs
-        for (int i = 0; i < maca.Length; i++)
-        {
-            if (maca[i] != null)
-            {
-                d_maca = Vector3.Distance(transform.position, maca[i].transform.position);
-                if (d_maca < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_maca++;
-                    n_mac.text = q_maca.ToString();
-                    maca[i] = null;
-                    PlayerPrefs.SetInt("numeromaca", q_maca);
-                }
-            }
-        }
-
-        // noz
-        for (int i = 0; i < noz.Length; i++)
-        {
-            if (noz[i] != null)
-            {
-                d_noz = Vector3.Distance(transform.position, noz[i].transform.position);
-                if (d_noz < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_noz++;
-                    n_n.text = q_noz.ToString();
-                    noz[i] = null;
-                    PlayerPrefs.SetInt("numeronoz", q_noz);
-                }
-            }
-        }
-
-        // amora
-        for (int i = 0; i < amora.Length; i++)
-        {
-            if (amora[i] != null)
-            {
-                d_amora = Vector3.Distance(transform.position, amora[i].transform.position);
-                if (d_amora < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_amora++;
-                    n_a.text = q_amora.ToString();
-                    amora[i] = null;
-                    PlayerPrefs.SetInt("numeroamora", q_amora);
-                }
-            }
-        }
-
-        // groselha
-        for (int i = 0; i < groselha.Length; i++)
-        {
-            if (groselha[i] != null)
-            {
-                d_groselha = Vector3.Distance(transform.position, groselha[i].transform.position);
-                if (d_groselha < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_groselha++;
-                    n_g.text = q_groselha.ToString();
-                    groselha[i] = null;
-                    PlayerPrefs.SetInt("numerogroselha", q_groselha);
-                }
-            }
-        }
-
-        // malagueta
-        for (int i = 0; i < malagueta.Length; i++)
-        {
-            if (malagueta[i] != null)
-            {
-                d_malagueta = Vector3.Distance(transform.position, malagueta[i].transform.position);
-                if (d_malagueta < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_malagueta++;
-                    n_mal.text = q_malagueta.ToString();
-                    malagueta[i] = null;
-                    PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
-                }
-            }
-        }
-
-        // cenoura
-        for (int i = 0; i < cenoura.Length; i++)
-        {
-            if (cenoura[i] != null)
-            {
-                d_cenoura = Vector3.Distance(transform.position, cenoura[i].transform.position);
-                if (d_cenoura < 5.0f && inputController.GetPlayerItem())
-                {
-                    q_cenoura++;
-                    n_cen.text = q_cenoura.ToString();
-                    cenoura[i] = null;
-                    PlayerPrefs.SetInt("numerocenoura", q_cenoura);
-                }
-            }
-        }
+        ApanharItens(meuros_collider, d_meuros, numeromeuros, n_meuros, "numeromeuros");
+        ApanharItens(maca, d_maca, q_maca, n_mac, "numeromaca");
+        ApanharItens(noz, d_noz, q_noz, n_n, "numeronoz");
+        ApanharItens(amora, d_amora, q_amora, n_a, "numeroamora");
+        ApanharItens(groselha, d_groselha, q_groselha, n_g, "numerogroselha");
+        ApanharItens(malagueta, d_malagueta,q_malagueta, n_mal, "numeromalagueta");
+        ApanharItens(cenoura, d_cenoura, q_cenoura, n_cen, "numerocenoura");
 
         // se a distancia há loja do zorii for menor que 3, o botão de compra tenha sido premido e
         // haja meuros sufecientes, a compra é feita
@@ -290,6 +186,25 @@ public class minku_script : MonoBehaviour
         //// Troca de informação por cenouras
         //if (q_cenoura > 0) button_troca.interactable = true;
         //else button_troca.interactable = false;
+    }
+
+    // Apanhar os diversos itens
+    public void ApanharItens(Collider[] item, float distance, int numero, Text texto_numero,string nome)
+    {
+        for (int i = 0; i < item.Length; i++)
+        {
+            if (item[i] != null)
+            {
+                distance= Vector3.Distance(transform.position, item[i].transform.position);
+                if (distance < 5.0f && inputController.GetPlayerItem())
+                {
+                    numero++;
+                    texto_numero.text = numero.ToString();
+                    item[i] = null;
+                    PlayerPrefs.SetInt(nome, numero);
+                }
+            }
+        }
     }
 
 }

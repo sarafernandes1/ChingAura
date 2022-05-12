@@ -83,7 +83,6 @@ public class minku_script : MonoBehaviour
                     n_n.text = q_noz.ToString();
                     compra_noz.name = "noz";
                     venda = true;
-                    PlayerPrefs.SetInt("venda", 1);
                     PlayerPrefs.SetInt("numeronoz", q_noz);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
@@ -97,7 +96,6 @@ public class minku_script : MonoBehaviour
                     compra_amora.name = "amora";
                     venda = true;
                     PlayerPrefs.SetInt("numeroamora", q_amora);
-
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
@@ -110,7 +108,6 @@ public class minku_script : MonoBehaviour
                     compra_groselha.name = "groselha";
                     venda = true;
                     PlayerPrefs.SetInt("numerogroselha", q_groselha);
-
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
 
@@ -153,8 +150,7 @@ public class minku_script : MonoBehaviour
         }
 
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() || d_zorii < 12.0f && inputController.GetPlayerItem() 
-            && PlayerPrefs.GetInt("temsaco")==1 
+        if (inputController.GetPlayerInventario() 
             /*||*/
             /*d_robert<6.0f && inputController.GetPlayerItem()*/)
         {

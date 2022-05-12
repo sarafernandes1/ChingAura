@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ataque"",
+                    ""type"": ""Button"",
+                    ""id"": ""d806e6f7-c632-4a4b-8798-572a8058b35f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""ProximoDialogo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a3a5f88-7951-4abe-af7f-23e0f20408c3"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ataque"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Inventario = m_Player.FindAction("Inventario", throwIfNotFound: true);
         m_Player_SairEsc = m_Player.FindAction("SairEsc", throwIfNotFound: true);
         m_Player_ProximoDialogo = m_Player.FindAction("ProximoDialogo", throwIfNotFound: true);
+        m_Player_Ataque = m_Player.FindAction("Ataque", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventario;
     private readonly InputAction m_Player_SairEsc;
     private readonly InputAction m_Player_ProximoDialogo;
+    private readonly InputAction m_Player_Ataque;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Inventario => m_Wrapper.m_Player_Inventario;
         public InputAction @SairEsc => m_Wrapper.m_Player_SairEsc;
         public InputAction @ProximoDialogo => m_Wrapper.m_Player_ProximoDialogo;
+        public InputAction @Ataque => m_Wrapper.m_Player_Ataque;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ProximoDialogo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
                 @ProximoDialogo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
                 @ProximoDialogo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnProximoDialogo;
+                @Ataque.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaque;
+                @Ataque.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaque;
+                @Ataque.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAtaque;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ProximoDialogo.started += instance.OnProximoDialogo;
                 @ProximoDialogo.performed += instance.OnProximoDialogo;
                 @ProximoDialogo.canceled += instance.OnProximoDialogo;
+                @Ataque.started += instance.OnAtaque;
+                @Ataque.performed += instance.OnAtaque;
+                @Ataque.canceled += instance.OnAtaque;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnInventario(InputAction.CallbackContext context);
         void OnSairEsc(InputAction.CallbackContext context);
         void OnProximoDialogo(InputAction.CallbackContext context);
+        void OnAtaque(InputAction.CallbackContext context);
     }
 }

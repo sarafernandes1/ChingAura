@@ -75,6 +75,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             c_cenoura.image.enabled = true;
             bt6.enabled = true;
         }
+
         if (distancetoMinku < 12.0f && tem_saco && primeiro_dialogo && inputController.GetPlayerItem())
         {
             fundo.enabled = false;
@@ -84,7 +85,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             g.enabled = false;
             c.enabled = false;
             mal.enabled = false;
-            c_maca.image.enabled =false;
+            c_maca.image.enabled = false;
             buttontext.enabled = false;
             c_noz.image.enabled = false;
             bt2.enabled = false;
@@ -93,12 +94,11 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             c_groselha.image.enabled = false;
             bt4.enabled = false;
             c_malagueta.image.enabled = false;
-            bt5.enabled =false;
+            bt5.enabled = false;
             c_cenoura.image.enabled = false;
             bt6.enabled = false;
             primeiro_dialogo = false;
         }
-
 
         if (!tem_saco && distancetoMinku < 12.0f && inputController.GetPlayerItem())
         {

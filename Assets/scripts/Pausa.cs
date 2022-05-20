@@ -10,6 +10,7 @@ public class Pausa : MonoBehaviour
     public Button continuar, sair, menu;
     public Text c_text, s_text, menu_text, pausa;
     public InputController inputController;
+    public AudioSource musica;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,7 @@ public class Pausa : MonoBehaviour
 
     public void VoltarMenu()
     {
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().StopMusic();
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }

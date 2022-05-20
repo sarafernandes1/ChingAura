@@ -16,14 +16,15 @@ public class minku_script : MonoBehaviour
     public int numeromeuros = 0, save=0;
     public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
     public bool tem_saco = false, venda=false;
-
+        
     void Start()
     {
+
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
     }
 
     void Update()
     {
-        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
 
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
@@ -34,13 +35,13 @@ public class minku_script : MonoBehaviour
         q_cenoura = PlayerPrefs.GetInt("numerocenoura");
         
         // APANHAR OS ITENS
-        ApanharItens(meuros_collider, d_meuros, numeromeuros, n_meuros, "numeromeuros");
-        ApanharItens(maca, d_maca, q_maca, n_mac, "numeromaca");
-        ApanharItens(noz, d_noz, q_noz, n_n, "numeronoz");
-        ApanharItens(amora, d_amora, q_amora, n_a, "numeroamora");
-        ApanharItens(groselha, d_groselha, q_groselha, n_g, "numerogroselha");
-        ApanharItens(malagueta, d_malagueta,q_malagueta, n_mal, "numeromalagueta");
-        ApanharItens(cenoura, d_cenoura, q_cenoura, n_cen, "numerocenoura");
+        ApanharItens(meuros_collider, d_meuros, numeromeuros, n_meuros, "numeromeuros","Meuro");
+        ApanharItens(maca, d_maca, q_maca, n_mac, "numeromaca","Maçã");
+        ApanharItens(noz, d_noz, q_noz, n_n, "numeronoz","Noz");
+        ApanharItens(amora, d_amora, q_amora, n_a, "numeroamora","Amora");
+        ApanharItens(groselha, d_groselha, q_groselha, n_g, "numerogroselha","Groselha");
+        ApanharItens(malagueta, d_malagueta,q_malagueta, n_mal, "numeromalagueta","Malagueta");
+        ApanharItens(cenoura, d_cenoura, q_cenoura, n_cen, "numerocenoura","Cenoura");
 
         // se a distancia há loja do zorii for menor que 3, o botão de compra tenha sido premido e
         // haja meuros sufecientes, a compra é feita
@@ -185,7 +186,7 @@ public class minku_script : MonoBehaviour
     }
 
     // Apanhar os diversos itens
-    public void ApanharItens(Collider[] item, float distance, int numero, Text texto_numero,string nome)
+    public void ApanharItens(Collider[] item, float distance, int numero, Text texto_numero,string nome, string nome_msm)
     {
         for (int i = 0; i < item.Length; i++)
         {

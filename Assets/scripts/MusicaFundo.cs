@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicaFundo : MonoBehaviour
 {
@@ -15,10 +16,12 @@ public class MusicaFundo : MonoBehaviour
     {
         if (_audioSource.isPlaying) return;
         _audioSource.Play();
+        _audioSource.mute = false;
     }
 
     public void StopMusic()
     {
+        _audioSource.mute=true;
         _audioSource.Stop();
     }
 }

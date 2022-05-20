@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class itensdestroy : MonoBehaviour
 {
@@ -29,8 +30,8 @@ public class itensdestroy : MonoBehaviour
         {
             Collect();
             PlayerPrefs.SetString("coletado" + gameObject.name, "true");
-            Destroy(gameObject);
-            
+            Destroy(gameObject); 
+    
         }
     }
 

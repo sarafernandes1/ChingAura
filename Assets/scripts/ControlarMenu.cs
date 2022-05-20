@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ControlarMenu : MonoBehaviour
 {
+    public Canvas menu, settings;
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +44,17 @@ public class ControlarMenu : MonoBehaviour
     {
         Debug.Log("exit click");
         Application.Quit(); //Fecha a aplicação; não corre no editor
+    }
+
+    public void Settings()
+    {
+        menu.enabled = false;
+        settings.enabled = true;
+    }
+
+    public void SettingsparaMenu()
+    {
+        menu.enabled = true;
+        settings.enabled = false;
     }
 }

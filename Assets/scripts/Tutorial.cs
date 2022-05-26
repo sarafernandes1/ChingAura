@@ -8,6 +8,7 @@ public class Tutorial : MonoBehaviour
     public Text texto_tutorial;
     public InputController inputController;
     private bool isInArea;
+    public Canvas tutorial_canvas;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,7 @@ public class Tutorial : MonoBehaviour
     {
         if (other.tag == "Player" && !inputController.GetPlayerItem())
         {
-            isInArea = true;
-            texto_tutorial.enabled = true;
+            tutorial_canvas.enabled = true;
         }
     }
 
@@ -33,8 +33,7 @@ public class Tutorial : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            isInArea = false;
-            texto_tutorial.enabled = false;
+            tutorial_canvas.enabled = false;
         }
     }
 }

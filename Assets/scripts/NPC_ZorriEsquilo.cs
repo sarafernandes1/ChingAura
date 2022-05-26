@@ -9,18 +9,19 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public float distancetoMinku;
     public InputController inputController;
     public RawImage fundo;
-    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros, mensagem_lojafechada;
+    public Text m, n, a, g, c, mal, buttontext, bt2, bt3, bt4, bt5, bt6, tmeuros;
     public RawImage caixatexto,npcimagem;
-    public Text texto, nome, textbutton, tb1;
+    public Text texto, nome, textbutton, tb1, loja_aberta_fechada;
     public CharacterController characterController;
     public Button c_maca, c_noz, c_amora, c_groselha, c_malagueta, c_cenoura, continuar, continuar1;
     public int numero_meuros;
-    private bool to_inteiro, tem_saco=false, primeiro_dialogo=false;
+    private bool to_inteiro, tem_saco=false, primeiro_dialogo=false, sair_loja=false, venda=false;
     public Collider saco_fruta;
+    public Canvas loja_indisponivel, loja_disponivel, dialogo_comprou, dialogo_naocomprou;
+    public MeshRenderer caixa1, caixa2, saco1;
 
     void Start()
     {
-        
     }
 
     void Update()
@@ -29,6 +30,10 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         if (saco==1)
         {
             tem_saco = true;
+            caixa1.enabled = true;
+            caixa2.enabled = true;
+            saco1.enabled = true;
+
         }
 
         PlayerPrefs.SetInt("inventarioloja", 1);
@@ -37,6 +42,7 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         if (distancetoMinku < 12.0f && inputController.GetPlayerItem() && tem_saco
             && !primeiro_dialogo && !fundo.enabled)
         {
+            venda = false;
             texto.text = "Saudações meu caro, o que vai comprar hoje?";
             caixatexto.enabled = true;
             npcimagem.enabled = true;
@@ -44,6 +50,8 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             textbutton.enabled = true;
             texto.enabled = true;
             nome.enabled = true;
+            loja_disponivel.enabled = false;
+            loja_indisponivel.enabled = false;
         }
 
         if (distancetoMinku<12.0f && tem_saco && primeiro_dialogo)
@@ -98,16 +106,25 @@ public class NPC_ZorriEsquilo : MonoBehaviour
             c_cenoura.image.enabled = false;
             bt6.enabled = false;
             primeiro_dialogo = false;
+            if (venda)
+            {
+                dialogo_comprou.enabled = true;
+            }
+            else
+            {
+                dialogo_naocomprou.enabled = true;
+            }
         }
 
-        if (!tem_saco && distancetoMinku < 12.0f && inputController.GetPlayerItem())
+        if (sair_loja)
         {
-            mensagem_lojafechada.enabled = !mensagem_lojafechada.enabled;
-            mensagem_lojafechada.text = "Loja indisponivel";
+            dialogo_comprou.enabled = false;
+            dialogo_naocomprou.enabled = false;
+            sair_loja = false;
         }
 
         // Ativar ou desativar os butoes de compra, dependendo do número de meuros
-        if(to_inteiro) numero_meuros = int.Parse(tmeuros.text);
+        if (to_inteiro) numero_meuros = int.Parse(tmeuros.text);
         if (numero_meuros >= 5) c_maca.interactable = true;
         else c_maca.interactable = false;
         if (numero_meuros >= 2) c_noz.interactable = true;
@@ -128,6 +145,11 @@ public class NPC_ZorriEsquilo : MonoBehaviour
         primeiro_dialogo = true;
     }
 
+    public void ContinuarUltimoDialogo()
+    {
+        sair_loja = true;
+    }
+
     public void SairLoja()
     {
         continuar1.name = "sair";
@@ -137,31 +159,66 @@ public class NPC_ZorriEsquilo : MonoBehaviour
     public void ComprarMaca() 
     {
         Debug.Log("compra");
+        venda = true;
         c_maca.name = "acesso maca concedido";
     }
     public void CompraNoz()
     {
         Debug.Log("compra");
+        venda = true;
+
         c_noz.name = "acesso noz concedido";
     }
     public void ComprarAmora()
     {
         Debug.Log("compra");
+        venda = true;
+
         c_amora.name = "acesso amora concedido";
     }
     public void ComprarGroselha()
     {
         Debug.Log("compra");
+        venda = true;
+
         c_groselha.name = "acesso groselha concedido";
     }
     public void ComprarMalagueta()
     {
         Debug.Log("compra");
+        venda = true;
+
         c_malagueta.name = "acesso malagueta concedido";
     }
     public void ComprarCenoura()
     {
         Debug.Log("compra");
+        venda = true;
+
         c_cenoura.name = "acesso cenoura concedido";
+    }
+
+    private void OnTriggerEnter(Collider other) //qd entra no trigger
+    {
+        if (other.tag == "Player")
+        {
+            if (tem_saco)
+            {
+                loja_disponivel.enabled = true;
+            }
+            else
+            {
+                loja_indisponivel.enabled = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other) //qd sai do trigger
+    {
+        if (other.tag == "Player")
+        {
+            loja_disponivel.enabled = false;
+            loja_indisponivel.enabled = false;
+        }
     }
 }

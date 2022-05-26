@@ -16,11 +16,11 @@ public class minku_script : MonoBehaviour
     public int numeromeuros = 0, save=0;
     public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
     public bool tem_saco = false, venda=false;
+    public Canvas comprou, nao_comprou;
         
     void Start()
     {
-
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+       // GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
     }
 
     void Update()
@@ -71,82 +71,60 @@ public class minku_script : MonoBehaviour
                     n_meuros.text = numeromeuros.ToString();
                     n_mac.text = q_maca.ToString();
                     compra_macas.name = "a";
-                    venda = true;
                     PlayerPrefs.SetInt("numeromaca", q_maca);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
-
-                if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
+                 if (compra_noz.name == "acesso noz concedido" && numeromeuros >= 2)
                 {
                     numeromeuros -= 2;
                     q_noz++;
                     n_meuros.text = numeromeuros.ToString();
                     n_n.text = q_noz.ToString();
                     compra_noz.name = "noz";
-                    venda = true;
                     PlayerPrefs.SetInt("numeronoz", q_noz);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
-
-                if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
+                 if (compra_amora.name == "acesso amora concedido" && numeromeuros >= 3)
                 {
                     numeromeuros -= 3;
                     q_amora++;
                     n_meuros.text = numeromeuros.ToString();
                     n_a.text = q_amora.ToString();
                     compra_amora.name = "amora";
-                    venda = true;
                     PlayerPrefs.SetInt("numeroamora", q_amora);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
-
-                if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
+                 if (compra_groselha.name == "acesso groselha concedido" && numeromeuros >= 3)
                 {
                     numeromeuros -= 3;
                     q_groselha++;
                     n_meuros.text = numeromeuros.ToString();
                     n_g.text = q_groselha.ToString();
                     compra_groselha.name = "groselha";
-                    venda = true;
                     PlayerPrefs.SetInt("numerogroselha", q_groselha);
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
-
-                if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
+                 if (compra_malagueta.name == "acesso malagueta concedido" && numeromeuros >= 13)
                 {
                     numeromeuros -= 13;
                     q_malagueta++;
                     n_meuros.text = numeromeuros.ToString();
                     n_mal.text = q_malagueta.ToString();
                     compra_malagueta.name = "malagueta";
-
-                    venda = true;
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                     PlayerPrefs.SetInt("numeromalagueta", q_malagueta);
                 }
-
-                if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
+                 if (compra_cenoura.name == "acesso cenoura concedido" && numeromeuros >= 20)
                 {
                     numeromeuros -= 20;
                     q_cenoura++;
                     n_meuros.text = numeromeuros.ToString();
                     n_cen.text = q_cenoura.ToString();
-                    venda = true;
                     compra_cenoura.name = "cenoura";
                     PlayerPrefs.SetInt("numerocenoura", q_cenoura);
-
                     PlayerPrefs.SetInt("numeromeuros", numeromeuros);
                 }
-
-                if (venda == false)
-                {
-                    PlayerPrefs.SetInt("venda", 0);
-                }
-                else
-                {
-
-                    PlayerPrefs.SetInt("venda", 1);
-                }
+                
             }
         }
 

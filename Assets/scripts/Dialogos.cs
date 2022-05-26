@@ -15,6 +15,7 @@ public class Dialogos : MonoBehaviour
     public Button continuar;
     int i=0;
     bool dialogo_fim;
+    public Canvas tutorial_canvas;
 
     void Start()
     {
@@ -34,6 +35,7 @@ public class Dialogos : MonoBehaviour
             brito.enabled = true;
             texto_button.enabled = true;
             continuar.image.enabled = true;
+            tutorial_canvas.enabled = false;
         }
 
         if (texto.enabled)
@@ -89,7 +91,6 @@ public class Dialogos : MonoBehaviour
     public void Continuar()
     {
         continuar.name= "continuar";
-        PlayerPrefs.SetInt("inventarioloja", 0);
     }
       
 

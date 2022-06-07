@@ -7,7 +7,7 @@ public class minku_script : MonoBehaviour
 {
     public InputController inputController;
     public Collider zorri, /*robert,*/ saco_fruta;
-    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros;
+    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros, fishpower;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     public Collider[] meuros_collider;
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
@@ -17,16 +17,18 @@ public class minku_script : MonoBehaviour
     public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
     public bool tem_saco = false, venda=false;
     public Canvas comprou, nao_comprou;
+    public Collider poder_peixe, poder_slime, poder_bat;
+    string poder, obteve_poder;
         
     void Start()
     {
-        //PlayerPrefs.DeleteAll();
        // GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
     }
 
     void Update()
     {
-
+        poder = PlayerPrefs.GetString("PoderFish");
+        obteve_poder = PlayerPrefs.GetString("PoderFish");
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
         q_noz = PlayerPrefs.GetInt("numeronoz");
@@ -138,10 +140,17 @@ public class minku_script : MonoBehaviour
             PlayerPrefs.SetString("robertoitens", "naotem");
         }
 
+        if (q_malagueta == 2)
+        {
+            PlayerPrefs.SetString("fafnyaitens", "tem");
+        }
+        else
+        {
+            PlayerPrefs.SetString("fafnyaitens", "naotem");
+        }
+
         // VER INVENTÁRIO, também, abre na loja
-        if (inputController.GetPlayerInventario() 
-            /*||*/
-            /*d_robert<6.0f && inputController.GetPlayerItem()*/)
+        if (inputController.GetPlayerInventario() )
         {
             fundo_inventario.enabled = !fundo_inventario.enabled;
             n_mac.enabled = !n_mac.enabled;
@@ -168,9 +177,11 @@ public class minku_script : MonoBehaviour
             n_cen.text = q_cenoura.ToString();
         }
 
-        //// Troca de informação por cenouras
-        //if (q_cenoura > 0) button_troca.interactable = true;
-        //else button_troca.interactable = false;
+        if (obteve_poder=="true")
+        {
+            fishpower.enabled = true;
+        }
+
     }
 
     // Apanhar os diversos itens

@@ -22,6 +22,12 @@ public class EstatuaMinku : MonoBehaviour
 
     void Update()
     {
+        if(PlayerPrefs.GetString("estatuacoletada") == "completado"){
+            m1.enabled = true;
+            m2.enabled = true;
+            cubo_ativarestatua.enabled = true;
+        }
+
         //apnanha pista
         //depois, tem que encontrar os dois elementos que a estatua estava a segurar
         for (int i = 0; i < objetos_da_estatua.Length; i++)

@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class DialogoBispo : MonoBehaviour
 {
-    public RawImage icon_minku, icon_npc, caixa_textominku, caixa_textbispoo;
-    public Text texto, minku, bispo, texto_button;
+    public RawImage icon_npc,caixa_textbispoo;
+    public Text texto, bispo, texto_button;
     public Collider npc, jogador;
     public InputController inputController;
     private float distancetoNPC;
@@ -72,14 +72,11 @@ public class DialogoBispo : MonoBehaviour
                         if (index >= 6 || index==4 && tem_materiais)
                         {
                             index = 0;
-                            caixa_textominku.enabled = false;
                             caixa_textbispoo.enabled = false;
                             texto.enabled = false;
                             icon_npc.enabled = false;
-                            icon_minku.enabled = false;
                             continuar.name = "a";
                             continuar.image.enabled = false;
-                            minku.enabled = false;
                             bispo.enabled = false;
                             texto_button.enabled = false;
                         }

@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Ataque",
+                    "name": "AcederPedido",
                     "type": "Button",
                     "id": "d806e6f7-c632-4a4b-8798-572a8058b35f",
                     "expectedControlType": "Button",
@@ -203,11 +203,11 @@
                 {
                     "name": "",
                     "id": "5a3a5f88-7951-4abe-af7f-23e0f20408c3",
-                    "path": "<Keyboard>/c",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Ataque",
+                    "action": "AcederPedido",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

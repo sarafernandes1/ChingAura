@@ -10,7 +10,7 @@ public class SacoZori : MonoBehaviour
     private float distancetoJogador;
     public AudioClip collectSound;
     public GameObject collectEffect;
-    public Canvas mensagem;
+    public Canvas mensagem, roberto;
 
     void Start()
     {
@@ -25,12 +25,18 @@ public class SacoZori : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (distancetoJogador < 5.0f && inputController.GetPlayerItem())
+        if (distancetoJogador < 5.0f && inputController.GetPlayerItem() && PlayerPrefs.GetString("robertoitens")== "tem")
         {
+            PlayerPrefs.SetInt("temsaco",1);
             Collect();
             PlayerPrefs.SetString("coletado" + gameObject.name, "true");
             Destroy(gameObject);
 
+        }
+
+        if (distancetoJogador < 5.0f && inputController.GetPlayerItem() && PlayerPrefs.GetString("robertoitens") != "tem")
+        {
+            roberto.enabled = true;
         }
     }
 

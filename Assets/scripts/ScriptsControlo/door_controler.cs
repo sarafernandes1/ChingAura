@@ -12,9 +12,8 @@ public class door_controler : MonoBehaviour
     public float distanceToCamera;
     public bool isInArea;
     public InputController inputController;
-    public Button buttonimage;
-    public Text textobutton;
     public Text numero_meuros;
+    public Canvas voltar, proxima;
 
     void Start()
     {
@@ -31,8 +30,8 @@ public class door_controler : MonoBehaviour
         if (other.tag == "Player" )
         {
             isInArea = true;
-            buttonimage.image.enabled = true;
-            textobutton.enabled = true; 
+          voltar.enabled = true;
+           proxima.enabled = true; 
         }
     }
 
@@ -41,25 +40,32 @@ public class door_controler : MonoBehaviour
         if (other.tag == "Player")
         {
             isInArea = false;
+            voltar.enabled = false;
+            proxima.enabled =false;
         }
     }
-    public void IrparaTemplo()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void VoltarTemplo()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void VoltarVila()
+    public void LightFlorest()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void IrparaFloresta()
+    public void HovePlains()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void Goldencleek()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public void DampeCave()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+    public void Boss()
+    {
+        SceneManager.LoadScene(5);
     }
 }

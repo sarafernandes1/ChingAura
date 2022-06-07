@@ -20,6 +20,7 @@ public class minku_script : MonoBehaviour
         
     void Start()
     {
+        //PlayerPrefs.DeleteAll();
        // GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
     }
 
@@ -126,6 +127,15 @@ public class minku_script : MonoBehaviour
                 }
                 
             }
+        }
+
+        if(q_noz==1 && numeromeuros == 3)
+        {
+            PlayerPrefs.SetString("robertoitens", "tem");
+        }
+        else
+        {
+            PlayerPrefs.SetString("robertoitens", "naotem");
         }
 
         // VER INVENTÁRIO, também, abre na loja

@@ -54,9 +54,9 @@ public class InputController : MonoBehaviour
         return _playerControls.Player.ProximoDialogo.triggered;
     }
 
-    public bool Ataque()
+    public bool AcederPedido()
     {
-        return _playerControls.Player.Ataque.triggered;
+        return _playerControls.Player.AcederPedido.triggered;
     }
 
     //public void ContinuarDialogo()

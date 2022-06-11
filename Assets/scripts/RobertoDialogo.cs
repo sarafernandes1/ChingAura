@@ -12,6 +12,7 @@ public class RobertoDialogo : MonoBehaviour
     float timer = 10.0f;
     int desligar_mensagem = 0;
     public Collider minku;
+    public AudioSource efeito;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,20 @@ public class RobertoDialogo : MonoBehaviour
         desligar_mensagem = PlayerPrefs.GetInt("desligar_mensagem");
         float distanceToMinku = Vector3.Distance(transform.position, minku.transform.position);
 
-        if (c1.enabled && continuar_button.name == "continuar" && desligar_mensagem==0)
+        if(inputController.GetPlayerItem() && desligar_mensagem==0 && distanceToMinku < 6.0f)
+        {
+            c1.enabled = true;
+            efeito.mute = false;
+            efeito.Play();
+        }
+
+        if (c1.enabled && continuar_button.name == "continuar" && desligar_mensagem==0 && PlayerPrefs.GetString("robertoitens") != "tem")
         { 
                 c2.enabled = true;
                 c1.enabled = false;
                 continuar_button.name = "a";
+            efeito.Stop();
+            efeito.mute = true;
         }
 
         if (cb1.name == "continuar")
@@ -59,16 +69,16 @@ public class RobertoDialogo : MonoBehaviour
 
         }
 
-        if (c5.enabled && cb4.name == "continuar")
+        if (c5.enabled && cb4.name == "continuar" )
         {
             c5.enabled = false;
             c6.enabled = true;
             PlayerPrefs.SetInt("desligar_mensagem", 1);
+            PlayerPrefs.SetString("pedido1", "registado");
         }
 
         if (inputController.AcederPedido() && PlayerPrefs.GetString("robertoitens") !="tem")
         {
-            pedido.enabled = !pedido.enabled;
             c6.enabled = false;
         }
 
@@ -76,13 +86,22 @@ public class RobertoDialogo : MonoBehaviour
         {
             nao_tem_itens.enabled = !nao_tem_itens.enabled;
         }
-        if (inputController.GetPlayerItem() && PlayerPrefs.GetString("robertoitens") == "tem" && distanceToMinku < 6.0f)
+        if (inputController.GetPlayerItem() && PlayerPrefs.GetString("robertoitens") == "tem" && distanceToMinku < 6.0f 
+            && PlayerPrefs.GetInt("fimdialogo")!= 1)
         {
             tem_itens.enabled =true;
-            if (cb5.name == "continuar")
-            {
-                tem_itens.enabled = false;
-            }
+            PlayerPrefs.SetString("pedido1", "completado");
+            int numero_meuros= PlayerPrefs.GetInt("numeromeuros");
+            numero_meuros = numero_meuros - 3;
+            PlayerPrefs.SetInt("numeromeuros", numero_meuros);
+            int numero_noz= PlayerPrefs.GetInt("numeronoz");
+            numero_meuros = numero_noz - 1;
+            PlayerPrefs.SetInt("numeronoz",numero_noz);
+        }
+        if (cb5.name == "continuar")
+        {
+            tem_itens.enabled = false;
+            PlayerPrefs.SetInt("fimdialogo", 1);
         }
     }
 

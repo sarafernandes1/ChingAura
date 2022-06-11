@@ -33,11 +33,6 @@ public class SacoZori : MonoBehaviour
             Destroy(gameObject);
 
         }
-
-        if (distancetoJogador < 5.0f && inputController.GetPlayerItem() && PlayerPrefs.GetString("robertoitens") != "tem")
-        {
-            roberto.enabled = true;
-        }
     }
 
     public void Collect()

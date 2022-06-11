@@ -22,7 +22,7 @@ public class minku_script : MonoBehaviour
         
     void Start()
     {
-       // GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
+       GameObject.FindGameObjectWithTag("Music").GetComponent<MusicaFundo>().PlayMusic();
     }
 
     void Update()

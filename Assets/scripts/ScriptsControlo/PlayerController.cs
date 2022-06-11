@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float playerSpeed = 3.0f;
     public float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    private Vector3 moveDirection = Vector3.zero;
 
     private void Start()
     {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
             playerVelocity.y = 0f;
         }
 
+
         Vector3 camRotation = cameratransform.eulerAngles;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
      
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour
         move.y = 0;
         move.Normalize();
 
+        
+
         controller.Move(move * Time.deltaTime * playerSpeed);
 
         // Changes the height position of the player..
@@ -46,10 +50,9 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
-
-
-
+        
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
     }
 }

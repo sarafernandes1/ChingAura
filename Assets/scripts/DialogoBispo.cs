@@ -40,37 +40,37 @@ public class DialogoBispo : MonoBehaviour
         primerio_dialogo = new string[7];
         dialogos[0] = "Hoho!! Olá Minku \n" +
             "Encontraste pistas da localização do ladrão e da ching aura?";
-        dialogos[1] = "Hoho! Um fragmento de ching aura \n" +
+        dialogos[1] = "Hoho! Um fragmento de ching aura. \n" +
             "Parece ser ho poder de "+ poder_adquirido +", se quiseres eu posso fazer com que\n" +
-            "consigas hosar ho poder, só precisamos de halgumas coisinhas";
+            "consigas hosar ho poder, só precisamos de halgumas coisinhas.";
         dialogos[2] = "Hoho, já tens os materiais?";
-        dialogos[3] = "Então vamos começar";
-        dialogos[4] = "Hm, parece que te faltam alguns materiais";
+        dialogos[3] = "Então vamos começar.";
+        dialogos[4] = "Hm, parece que te faltam alguns materiais.";
         if (poder_adquirido == "PoderFish")
         {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada e 2 maçãs";
+            dialogos[5] = "Materiais em falta: 1 cenoura dourada e 2 maçãs.";
         }
         if (poder_adquirido == "poderslime")
         {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 3 maçãs e 2 amoras";
+            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 3 maçãs e 2 amoras.";
         }
         if (poder_adquirido == "poderpeixe")
         {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 1 morangoe e 2 maçãs";
+            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 1 morangoe e 2 maçãs.";
         }
 
         dialogos[6] = "Hm, sem pistas por hagora \n" +
-            "se encontares halgo, não te esqueças de havisar";
+            "se encontares halgo, não te esqueças de havisar.";
 
-        primerio_dialogo[0] = "Hoho, minku, ainda bem que aqui vens\n" +
-            "Algo de terrivel aconteceu";
+        primerio_dialogo[0] = "Hoho, minku, ainda bem que aqui vens.\n" +
+            "Algo de terrivel aconteceu.";
         primerio_dialogo[1] = "Kiron, roubou a Ching Aura!!!!!";
-        primerio_dialogo[2] = "Agora precisamos de alguém que consiga os três poderes e, que depois enfrete-o";
+        primerio_dialogo[2] = "Agora precisamos de alguém que consiga os três poderes e, que, depois enfrete-o.";
         primerio_dialogo[3] = "Ao menos, se houvesse alguém, lutador e corajoso para fazer isso";
-        primerio_dialogo[4] = "Meu deus, lá vem a tipica fala de quando se precisa de um herói. Ogho eu faço isso, afinal, sou o único personagem que anda por aí.";
+        primerio_dialogo[4] = "Meu deus Ogho, eu faço isso, afinal, sou o único personagem que anda por aí.";
         primerio_dialogo[5] = "Fazias isso por todos nós? \n" +
-            "Muito obrigado, meu Minku, quando conquistares um poder, vem aqui\n" +
-            "Boa sorte, nosso herói";
+            "Muito obrigado, meu Minku, quando conquistares um poder, vem aqui.\n" +
+            "Boa sorte, nosso herói.";
 
         distancetoNPC = Vector3.Distance(npc.transform.position, jogador.transform.position);
         if (distancetoNPC < 12.0f && inputController.GetPlayerItem() && (poder_adquirido == "PoderFish" || n_dialogo==0))
@@ -119,6 +119,7 @@ public class DialogoBispo : MonoBehaviour
                             bispo.enabled = false;
                             texto_button.enabled = false;
                              PlayerPrefs.SetInt("ndialogo", 1);
+                            PlayerPrefs.SetString("pedido3", "registado");
                         }
                     }
                 

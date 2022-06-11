@@ -69,12 +69,12 @@ public class FafnyaDialogo : MonoBehaviour
             c4.enabled = false;
             cb3.name = "a";
             PlayerPrefs.SetInt("desligar",1);
+            PlayerPrefs.SetString("pedido2", "registado");
         }
 
 
         if (inputController.AcederPedido() && PlayerPrefs.GetString("fafnyaitens") != "tem")
         {
-            pedido.enabled = !pedido.enabled;
             c6.enabled = false;
         }
 
@@ -85,7 +85,8 @@ public class FafnyaDialogo : MonoBehaviour
         if (inputController.GetPlayerItem() && PlayerPrefs.GetString("fafnyaitens") == "tem" && distanceToMinku < 6.0f)
         {
             tem_itens.enabled = true;
-            if (cb5.name == "continuar")
+            PlayerPrefs.SetString("pedido2", "completado");
+            if (inputController.GetPlayerItem())
             {
                 tem_itens.enabled = false;
             }

@@ -13,52 +13,88 @@ public class DialogoBispo : MonoBehaviour
     private string[] dialogos, primerio_dialogo;
     public Button continuar;
     public int index = 0;
-    bool tem_materiais=false;
+    bool tem_materiais_fish=false, tem_materiais_slime=false, tem_materiais_bat=false;
     int n_dialogo = 0;
     bool tem_fragmento = false;
     public Canvas canvas;
     string poder_adquirido;
+    string[] poderes, materiais;
 
     void Start()
     {
+        poderes = new string[3];
+        materiais = new string[50];
     }
 
     void Update()
     {
-        poder_adquirido = PlayerPrefs.GetString("poder");
+        if (PlayerPrefs.GetString("PowerSlime") == "coletado")
+        {
+            poderes[0] = "Slime";
+            materiais[0] = "Slime: 1 cenoura dourada, 1 noz, 3 maçãs e 2 amoras. ";
+        }
+        else
+        {
+            poderes[0] = "";
+            materiais[0] = "";
+
+        }
+
+        if (PlayerPrefs.GetString("PoderFish") == "coletado")
+        {
+            poderes[1] = "Fish";
+            materiais[1] = "Fish: 1 cenoura dourada e 2 maçãs. ";
+
+        }
+        else
+        {
+            poderes[1] = "";
+            materiais[1] = "";
+        }
+
+        if (PlayerPrefs.GetString("BampPower") == "coletado")
+        {
+            poderes[2] = "Bat";
+            materiais[2] = "Bat:  1 cenoura dourada, 1 noz, 1 morango e 2 maçãs. ";
+        }
+        else
+        {
+            poderes[2] = "";
+            materiais[2] = "";
+        }
+
         n_dialogo = PlayerPrefs.GetInt("ndialogo");
-        if (PlayerPrefs.GetInt("numeromaca") >= 1)
+        if (PlayerPrefs.GetInt("numeromaca") >= 2 && PlayerPrefs.GetInt("numerocenoura") >= 1)
         {
-            tem_materiais = true;
+            tem_materiais_fish = true;
         }
-        if (PlayerPrefs.GetInt("numeromaca") <= 0)
+        else tem_materiais_fish = false;
+
+        if (PlayerPrefs.GetInt("numeromaca") >= 3 && PlayerPrefs.GetInt("numerocenoura") >= 1 &&
+            PlayerPrefs.GetInt("numeronoz")>=1 && PlayerPrefs.GetInt("numeroamora")>=2)
         {
-            tem_materiais = false;
+            tem_materiais_slime = true;
         }
+        else tem_materiais_slime= false;
+
+        if (PlayerPrefs.GetInt("numeromaca") >= 2 && PlayerPrefs.GetInt("numerocenoura") >= 1 &&
+           PlayerPrefs.GetInt("numeronoz") >= 1 && PlayerPrefs.GetInt("numerogroselha") >= 1)
+        {
+            tem_materiais_bat = true;
+        }
+        else tem_materiais_bat = false;
 
         dialogos = new string[7];
         primerio_dialogo = new string[7];
         dialogos[0] = "Hoho!! Olá Minku \n" +
             "Encontraste pistas da localização do ladrão e da ching aura?";
-        dialogos[1] = "Hoho! Um fragmento de ching aura. \n" +
-            "Parece ser ho poder de "+ poder_adquirido +", se quiseres eu posso fazer com que\n" +
-            "consigas hosar ho poder, só precisamos de halgumas coisinhas.";
+        dialogos[1] = "Hoho! Um(ns) fragmento(s) de ching aura. \n" +
+            "Parece ser(em) ho(s) poder(es) de "+ poderes[0]+" , "+poderes[1]+" , "+poderes[2] +", se quiseres eu posso fazer com que\n" +
+            "consigas hosar ho(s) poder(es), só precisamos de halgumas coisinhas.";
         dialogos[2] = "Hoho, já tens os materiais?";
         dialogos[3] = "Então vamos começar.";
         dialogos[4] = "Hm, parece que te faltam alguns materiais.";
-        if (poder_adquirido == "PoderFish")
-        {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada e 2 maçãs.";
-        }
-        if (poder_adquirido == "poderslime")
-        {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 3 maçãs e 2 amoras.";
-        }
-        if (poder_adquirido == "poderbat")
-        {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 1 morango e 2 maçãs.";
-        }
-
+        dialogos[5] = materiais[0] + "\n" + materiais[1] + "\n" + materiais[2];
         dialogos[6] = "Hm, sem pistas por hagora \n" +
             "se encontares halgo, não te esqueças de havisar.";
 
@@ -73,7 +109,7 @@ public class DialogoBispo : MonoBehaviour
             "Boa sorte, nosso herói.";
 
         distancetoNPC = Vector3.Distance(npc.transform.position, jogador.transform.position);
-        if (distancetoNPC < 12.0f && inputController.GetPlayerItem() && (poder_adquirido == "PoderFish" || n_dialogo==0))
+        if (distancetoNPC >12.0f && inputController.GetPlayerItem())
         {
             icon_npc.enabled = true;
             caixa_textbispoo.enabled = true;
@@ -126,22 +162,22 @@ public class DialogoBispo : MonoBehaviour
             }
         }
 
-        if (texto.enabled && n_dialogo==1 && poder_adquirido == "PoderFish")
+        if (texto.enabled && n_dialogo == 1)
         {
             for (int j = 0; j < dialogos.Length; j++)
             {
                 if (index < 7)
                 {
-                    //if (index == 5) texto.text= dialogos[index] + " 1 maçã";
-                    //else  texto.text = dialogos[index];
+                    if (index == 5) texto.text = dialogos[index];
+                    else texto.text = dialogos[index];
                     texto.text = dialogos[index];
                     if (continuar.name == "continuar")
                     {
                         index++;
-                        if (tem_materiais && index==2) index = 3;
-                        else if(!tem_materiais && index==2) index = 4;
+                        if (tem_materiais_fish && index == 2) index = 3;
+                        else if (!tem_materiais_fish && index == 2) index = 4;
                         continuar.name = "a";
-                        if (index >= 6 || index==4 && tem_materiais)
+                        if (index >= 6)
                         {
                             index = 0;
                             caixa_textbispoo.enabled = false;
@@ -153,76 +189,34 @@ public class DialogoBispo : MonoBehaviour
                             texto_button.enabled = false;
                             PlayerPrefs.SetString("PoderFish", "true");
                         }
-                    }
-                }
-            }
-        }
-
-        if (texto.enabled && n_dialogo == 1 && poder_adquirido == "poderslime")
-        {
-            for (int j = 0; j < dialogos.Length; j++)
-            {
-                if (index < 7)
-                {
-                    //if (index == 5) texto.text= dialogos[index] + " 1 maçã";
-                    //else  texto.text = dialogos[index];
-                    texto.text = dialogos[index];
-                    if (continuar.name == "continuar")
-                    {
-                        index++;
-                        if (tem_materiais && index == 2) index = 3;
-                        else if (!tem_materiais && index == 2) index = 4;
-                        continuar.name = "a";
-                        if (index >= 6 || index == 4 && tem_materiais)
+                        if (index == 4)
                         {
-                            index = 0;
-                            caixa_textbispoo.enabled = false;
-                            texto.enabled = false;
-                            icon_npc.enabled = false;
-                            continuar.name = "a";
-                            continuar.image.enabled = false;
-                            bispo.enabled = false;
-                            texto_button.enabled = false;
-                            PlayerPrefs.SetString("poderslime", "true");
+                            if (tem_materiais_fish)
+                            {
+                                index = 0;
+                                caixa_textbispoo.enabled = false;
+                                texto.enabled = false;
+                                icon_npc.enabled = false;
+                                continuar.name = "a";
+                                continuar.image.enabled = false;
+                                bispo.enabled = false;
+                                texto_button.enabled = false;
+                                PlayerPrefs.SetString("PoderFish", "true");
+                            }
+                            else if (tem_materiais_slime)
+                            {
+                                PlayerPrefs.SetString("poderslime", "true");
+                            }
+                            else if (tem_materiais_bat)
+                            {
+                                PlayerPrefs.SetString("poderbat", "true");
+                            }
                         }
                     }
                 }
             }
         }
-
-        if (texto.enabled && n_dialogo == 1 && poder_adquirido == "poderbat")
-        {
-            for (int j = 0; j < dialogos.Length; j++)
-            {
-                if (index < 7)
-                {
-                    //if (index == 5) texto.text= dialogos[index] + " 1 maçã";
-                    //else  texto.text = dialogos[index];
-                    texto.text = dialogos[index];
-                    if (continuar.name == "continuar")
-                    {
-                        index++;
-                        if (tem_materiais && index == 2) index = 3;
-                        else if (!tem_materiais && index == 2) index = 4;
-                        continuar.name = "a";
-                        if (index >= 6 || index == 4 && tem_materiais)
-                        {
-                            index = 0;
-                            caixa_textbispoo.enabled = false;
-                            texto.enabled = false;
-                            icon_npc.enabled = false;
-                            continuar.name = "a";
-                            continuar.image.enabled = false;
-                            bispo.enabled = false;
-                            texto_button.enabled = false;
-                            PlayerPrefs.SetString("poderbat", "true");
-                        }
-                    }
-                }
-            }
-        }
-
-
+      
 
     }
 

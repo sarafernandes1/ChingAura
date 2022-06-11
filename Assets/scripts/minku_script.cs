@@ -181,16 +181,26 @@ public class minku_script : MonoBehaviour
 
         if (obteve_poder=="true")
         {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 2;
             fishpower.enabled = true;
         }
 
         if (obteve_poder1 == "true")
         {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 3;
+            q_noz = q_noz - 1;
+            q_amora = q_amora - 2;
             slimepower.enabled = true;
         }
 
         if (obteve_poder2 == "true")
         {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 2;
+            q_noz = q_noz - 1;
+            q_groselha = q_groselha - 1;
             batpower.enabled = true;
         }
 

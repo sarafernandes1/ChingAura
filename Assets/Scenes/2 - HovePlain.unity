@@ -236,7 +236,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1466594571464756, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
       propertyPath: m_Name
-      value: PoderFish
+      value: PowerSlime
       objectReference: {fileID: 0}
     - target: {fileID: 4734364914070202, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
       propertyPath: m_RootOrder
@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 114740300400230638, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
       propertyPath: minku
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1415331053}
     - target: {fileID: 114740300400230638, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
       propertyPath: moeda
       value: 
@@ -309,7 +309,7 @@ PrefabInstance:
     - target: {fileID: 114740300400230638, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
       propertyPath: inputController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 262693484}
     m_RemovedComponents:
     - {fileID: 114740300400230638, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 908e3427a87e203428312e7911a4c50c, type: 3}
@@ -3194,7 +3194,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165352600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.9, y: 16.78, z: 34.4}
+  m_LocalPosition: {x: -49.22, y: 16.78, z: -14.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 555802863}
@@ -3224,8 +3224,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 22.031687, y: 10.905188, z: 9.505096}
-  m_Center: {x: -0.5304518, y: 4.952594, z: 4.7900276}
+  m_Size: {x: 10.13018, y: 6.715641, z: 19.096062}
+  m_Center: {x: -0.3237028, y: 2.857792, z: -0.1688118}
 --- !u!1001 &178134798
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6132,7 +6132,7 @@ Transform:
   m_Children:
   - {fileID: 1993097716}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &382887778
 GameObject:
@@ -8765,7 +8765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 555802863}
   m_Layer: 0
-  m_Name: PoderFish
+  m_Name: SlimePower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8788,7 +8788,7 @@ Transform:
   - {fileID: 1109261632}
   - {fileID: 1638907509}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 36.898, z: 0}
 --- !u!1001 &568999884
 PrefabInstance:
@@ -11997,6 +11997,44 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 401814, guid: 625541a65d7179346a2fac339f4d3f34, type: 3}
   m_PrefabInstance: {fileID: 782361227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &782914036 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7190663190999829809, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+  m_PrefabInstance: {fileID: 2102316801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &782914038 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5963324594637250650, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+  m_PrefabInstance: {fileID: 2102316801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &782914040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782914036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b211e74c96d7f48bc285aa732453ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1415331057}
+  modelo: {fileID: 782914038}
+  poder: {fileID: 1109261634}
+--- !u!65 &782914041
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782914036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.0758, y: 31.708103, z: 30.877003}
+  m_Center: {x: -0.020999908, y: -5.2582283, z: 15.215502}
 --- !u!1001 &789146049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16771,13 +16809,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109261631}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69d9bef03ebb96248a791b55ff593d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputController: {fileID: 0}
-  jogador: {fileID: 0}
+  inputController: {fileID: 262693484}
+  jogador: {fileID: 1415331053}
   collectSound: {fileID: 8300000, guid: a9c94133a67426e4c8515c5e2381ae4f, type: 3}
   collectEffect: {fileID: 1702657300312902, guid: a45c51da10cf1a84abc6a99c06951e3f, type: 3}
 --- !u!135 &1109261634 stripped
@@ -20800,7 +20838,7 @@ MonoBehaviour:
   comprou: {fileID: 0}
   nao_comprou: {fileID: 0}
   poder_peixe: {fileID: 0}
-  poder_slime: {fileID: 0}
+  poder_slime: {fileID: 1109261634}
   poder_bat: {fileID: 0}
 --- !u!65 &1415331056
 BoxCollider:
@@ -23199,8 +23237,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Uh, o que \xE9 aquela coisa brilhante do outro lado do rio, ser\xE1 um
-    fragmento de ching aura?"
+  m_Text: Uh, Minku, olha um fragmento.
 --- !u!222 &1565276168
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29523,19 +29560,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
   m_PrefabInstance: {fileID: 2102316801}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1993097717
-MonoBehaviour:
+--- !u!65 &1993097717
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1993097715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b211e74c96d7f48bc285aa732453ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1415331057}
+  serializedVersion: 2
+  m_Size: {x: 27.065763, y: 40.827133, z: 35.15008}
+  m_Center: {x: 0.77754265, y: -5.971519, z: 12.575055}
 --- !u!1001 &1997232765
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30278,7 +30315,7 @@ Transform:
   - {fileID: 1327069518}
   - {fileID: 946716298}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2043338283
 PrefabInstance:
@@ -31347,9 +31384,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1399421826404361369, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1399421826404361369, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1399421826404361369, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
       propertyPath: m_Name
       value: Inimigo1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963324594637250650, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5963324594637250650, guid: cea26c7f3c1268842b9ce359b6952cc6, type: 3}
       propertyPath: m_Materials.Array.data[0]

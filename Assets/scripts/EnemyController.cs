@@ -9,8 +9,9 @@ public class EnemyController : MonoBehaviour
     public Transform Player;
     int MoveSpeed = 4;
     int MaxDist = 10;
-    int MinDist = 5;
-
+    int MinDist = 3;
+    public MeshRenderer modelo;
+    public Collider poder;
 
     void Start()
     {
@@ -19,16 +20,17 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        transform.LookAt(Player);
-
-        if (Vector3.Distance(transform.position, Player.position) >= MinDist)
+       
+        if (poder==null)
         {
+            modelo.enabled = true;
+            transform.LookAt(Player);
+            
+            if (Vector3.Distance(transform.position, Player.position) >= MinDist)
+            {
+                transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-
-
-
-          
+            }
         }
     }
 }

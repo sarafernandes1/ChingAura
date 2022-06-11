@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class minku_script : MonoBehaviour
 {
     public InputController inputController;
-    public Collider zorri, /*robert,*/ saco_fruta;
-    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros, fishpower;
+    public Collider zorri, saco_fruta;
+    public RawImage fundo_inventario, imaca, inoz,iamora,igroselha,imal,icen, imeuros, fishpower, slimepower, batpower;
     public Collider[] maca, noz, amora, groselha, malagueta, cenoura;
     public Collider[] meuros_collider;
     public Text n_mac, n_n, n_g,n_a, n_mal, n_cen, n_meuros;
     public int q_maca=0, q_noz=0, q_amora=0, q_groselha=0,q_malagueta=0, q_cenoura;
     public float d_maca,d_noz,d_amora,d_groselha, d_malagueta, d_cenoura, d_zorii, d_robert, d_meuros;
     public int numeromeuros = 0, save=0;
-    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura/*, button_troca*/;
+    public Button compra_macas, compra_noz, compra_amora, compra_groselha, compra_malagueta, compra_cenoura;
     public bool tem_saco = false, venda=false;
     public Canvas comprou, nao_comprou;
     public Collider poder_peixe, poder_slime, poder_bat;
-    string poder, obteve_poder;
+    string poder, obteve_poder,obteve_poder1, obteve_poder2;
         
     void Start()
     {
@@ -29,6 +29,8 @@ public class minku_script : MonoBehaviour
     {
         poder = PlayerPrefs.GetString("PoderFish");
         obteve_poder = PlayerPrefs.GetString("PoderFish");
+        obteve_poder1 = PlayerPrefs.GetString("poderslime");
+        obteve_poder2 = PlayerPrefs.GetString("poderbat");
         numeromeuros = PlayerPrefs.GetInt("numeromeuros");
         q_maca = PlayerPrefs.GetInt("numeromaca");
         q_noz = PlayerPrefs.GetInt("numeronoz");
@@ -180,6 +182,16 @@ public class minku_script : MonoBehaviour
         if (obteve_poder=="true")
         {
             fishpower.enabled = true;
+        }
+
+        if (obteve_poder1 == "true")
+        {
+            slimepower.enabled = true;
+        }
+
+        if (obteve_poder2 == "true")
+        {
+            batpower.enabled = true;
         }
 
     }

@@ -86,6 +86,7 @@ public class FafnyaDialogo : MonoBehaviour
         {
             tem_itens.enabled = true;
             PlayerPrefs.SetString("pedido2", "completado");
+            PlayerPrefs.SetString("poder", "poderslime");
             if (inputController.GetPlayerItem())
             {
                 tem_itens.enabled = false;

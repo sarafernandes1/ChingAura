@@ -54,9 +54,9 @@ public class DialogoBispo : MonoBehaviour
         {
             dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 3 maçãs e 2 amoras.";
         }
-        if (poder_adquirido == "poderpeixe")
+        if (poder_adquirido == "poderbat")
         {
-            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 1 morangoe e 2 maçãs.";
+            dialogos[5] = "Materiais em falta: 1 cenoura dourada, 1 noz, 1 morango e 2 maçãs.";
         }
 
         dialogos[6] = "Hm, sem pistas por hagora \n" +
@@ -157,6 +157,72 @@ public class DialogoBispo : MonoBehaviour
                 }
             }
         }
+
+        if (texto.enabled && n_dialogo == 1 && poder_adquirido == "poderslime")
+        {
+            for (int j = 0; j < dialogos.Length; j++)
+            {
+                if (index < 7)
+                {
+                    //if (index == 5) texto.text= dialogos[index] + " 1 maçã";
+                    //else  texto.text = dialogos[index];
+                    texto.text = dialogos[index];
+                    if (continuar.name == "continuar")
+                    {
+                        index++;
+                        if (tem_materiais && index == 2) index = 3;
+                        else if (!tem_materiais && index == 2) index = 4;
+                        continuar.name = "a";
+                        if (index >= 6 || index == 4 && tem_materiais)
+                        {
+                            index = 0;
+                            caixa_textbispoo.enabled = false;
+                            texto.enabled = false;
+                            icon_npc.enabled = false;
+                            continuar.name = "a";
+                            continuar.image.enabled = false;
+                            bispo.enabled = false;
+                            texto_button.enabled = false;
+                            PlayerPrefs.SetString("poderslime", "true");
+                        }
+                    }
+                }
+            }
+        }
+
+        if (texto.enabled && n_dialogo == 1 && poder_adquirido == "poderbat")
+        {
+            for (int j = 0; j < dialogos.Length; j++)
+            {
+                if (index < 7)
+                {
+                    //if (index == 5) texto.text= dialogos[index] + " 1 maçã";
+                    //else  texto.text = dialogos[index];
+                    texto.text = dialogos[index];
+                    if (continuar.name == "continuar")
+                    {
+                        index++;
+                        if (tem_materiais && index == 2) index = 3;
+                        else if (!tem_materiais && index == 2) index = 4;
+                        continuar.name = "a";
+                        if (index >= 6 || index == 4 && tem_materiais)
+                        {
+                            index = 0;
+                            caixa_textbispoo.enabled = false;
+                            texto.enabled = false;
+                            icon_npc.enabled = false;
+                            continuar.name = "a";
+                            continuar.image.enabled = false;
+                            bispo.enabled = false;
+                            texto_button.enabled = false;
+                            PlayerPrefs.SetString("poderbat", "true");
+                        }
+                    }
+                }
+            }
+        }
+
+
 
     }
 

@@ -27,6 +27,31 @@ public class minku_script : MonoBehaviour
 
     void Update()
     {
+        if (obteve_poder == "true")
+        {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 2;
+            fishpower.enabled = true;
+        }
+
+        if (obteve_poder1 == "true")
+        {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 3;
+            q_noz = q_noz - 1;
+            q_amora = q_amora - 2;
+            slimepower.enabled = true;
+        }
+
+        if (obteve_poder2 == "true")
+        {
+            q_cenoura = q_cenoura - 1;
+            q_maca = q_maca - 2;
+            q_noz = q_noz - 1;
+            q_groselha = q_groselha - 1;
+            batpower.enabled = true;
+        }
+
         poder = PlayerPrefs.GetString("PoderFish");
         obteve_poder = PlayerPrefs.GetString("PoderFish");
         obteve_poder1 = PlayerPrefs.GetString("poderslime");
@@ -151,6 +176,8 @@ public class minku_script : MonoBehaviour
             PlayerPrefs.SetString("fafnyaitens", "naotem");
         }
 
+
+
         // VER INVENTÁRIO, também, abre na loja
         if (inputController.GetPlayerInventario() )
         {
@@ -179,31 +206,7 @@ public class minku_script : MonoBehaviour
             n_cen.text = q_cenoura.ToString();
         }
 
-        if (obteve_poder=="true")
-        {
-            q_cenoura = q_cenoura - 1;
-            q_maca = q_maca - 2;
-            fishpower.enabled = true;
-        }
-
-        if (obteve_poder1 == "true")
-        {
-            q_cenoura = q_cenoura - 1;
-            q_maca = q_maca - 3;
-            q_noz = q_noz - 1;
-            q_amora = q_amora - 2;
-            slimepower.enabled = true;
-        }
-
-        if (obteve_poder2 == "true")
-        {
-            q_cenoura = q_cenoura - 1;
-            q_maca = q_maca - 2;
-            q_noz = q_noz - 1;
-            q_groselha = q_groselha - 1;
-            batpower.enabled = true;
-        }
-
+       
     }
 
     // Apanhar os diversos itens

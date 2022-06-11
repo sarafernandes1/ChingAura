@@ -174,8 +174,8 @@ public class DialogoBispo : MonoBehaviour
                     if (continuar.name == "continuar")
                     {
                         index++;
-                        if (tem_materiais_fish && index == 2) index = 3;
-                        else if (!tem_materiais_fish && index == 2) index = 4;
+                        if ((tem_materiais_fish || tem_materiais_bat || tem_materiais_slime) && index == 2) index = 3;
+                        else if (!(tem_materiais_fish || tem_materiais_bat || tem_materiais_slime) && index == 2) index = 4;
                         continuar.name = "a";
                         if (index >= 6)
                         {
@@ -187,11 +187,10 @@ public class DialogoBispo : MonoBehaviour
                             continuar.image.enabled = false;
                             bispo.enabled = false;
                             texto_button.enabled = false;
-                            PlayerPrefs.SetString("PoderFish", "true");
                         }
                         if (index == 4)
                         {
-                            if (tem_materiais_fish)
+                            if (tem_materiais_fish && PlayerPrefs.GetString("PoderFish")!="true")
                             {
                                 index = 0;
                                 caixa_textbispoo.enabled = false;
@@ -203,11 +202,11 @@ public class DialogoBispo : MonoBehaviour
                                 texto_button.enabled = false;
                                 PlayerPrefs.SetString("PoderFish", "true");
                             }
-                            else if (tem_materiais_slime)
+                            else if (tem_materiais_slime && PlayerPrefs.GetString("poderslime") != "true")
                             {
                                 PlayerPrefs.SetString("poderslime", "true");
                             }
-                            else if (tem_materiais_bat)
+                            else if (tem_materiais_bat && PlayerPrefs.GetString("poderbat") != "true")
                             {
                                 PlayerPrefs.SetString("poderbat", "true");
                             }
